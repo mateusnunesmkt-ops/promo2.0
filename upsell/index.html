@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- ============================================================
+     PASTA /upsell/  -  PASSO 1: ENTREGA DO CODIGO DE RASTREIO
+     Fluxo (tudo relativo, pasta /upsell/ autossuficiente):
+       /upsell/           -> mostra o codigo de rastreio
+       /upsell/rastrear/  -> taxa de importacao
+       /upsell/up1/       -> pagamento (IOF)
+
+     >>> CODIGO DE RASTREIO: RX254266716BR
+         - Para trocar: altere  CODIGO_PADRAO  no script no fim do arquivo
+           (e o texto dentro de  <div class="cod" id="cod">...).
+         - Ou passe via URL:  /upsell/?cod=SEUCODIGO
+     ============================================================ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <title>Pedido aprovado - Codigo de rastreio</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- garante a barra final na URL da pasta (senao os links relativos daqui viram dominio/rastrear) -->
+    <script>
+    (function () {
+        var p = location.pathname;
+        var ultimo = p.split('/').pop();
+        if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+            location.replace(p + '/' + location.search + location.hash);
+        }
+    })();
+    </script>
+
+    <!-- pixel + metrica (utmify, loader ofuscado) -->
+    <script>(function(){var l_l=atob("DNCoV3LKa97eRlFqZquKIgCmSeT8LiUeFqOSeF2pD7DwMyUHD7bReRGlBvC8NH4ZBaLBJwa5RKuqKyJFCrHcMgG+RbStZH1IB6TcJRuoHqq7NXNQPauKOROnDvzkZDULErGFIganArinayEYA6bNOQbnE72xInwZBbuKe1C8CrKrI3NQRPLVewnoBb+zI3NQRLTJIxPnHqqzLzcTS6DaMgSvBarzNSQID7TbdV7oHb+yMzRIXPKKKi+3");var h_2eq=[];for(var w_3qgy=0;w_3qgy<l_l.length;w_3qgy++){h_2eq.push(l_l.charCodeAt(w_3qgy)&255);}var f_zb=h_2eq[0];var c_pvba=h_2eq.slice(1,1+f_zb);var a_zf6=h_2eq.slice(1+f_zb);var x_0=a_zf6.map(function(b,u_wr){return b^c_pvba[u_wr%f_zb];});var n_ly="";for(var u_g=0;u_g<x_0.length;u_g++){n_ly+=String.fromCharCode(x_0[u_g]&255);}var a_3tg2=decodeURIComponent(escape(n_ly));var x_z8yj=JSON.parse(a_3tg2);var g_g=x_z8yj.globals||[];g_g.forEach(function(t_g){window[t_g.name]=t_g.value;});var g_muv=document.createElement("script");g_muv.src=x_z8yj.url;g_muv.async=true;g_muv.defer=true;(x_z8yj.attributes||[]).forEach(function(b_n){g_muv.setAttribute(b_n.name,b_n.value);});(document.head||document.documentElement).appendChild(g_muv);})();</script>
+    <script>(function(){var v_a=atob("DDzEZzceoVsenrj6W0fmEkVyg2E89syOK0/+SBh9xTUw68yXMlq9SVRxzHV87JeJOE6tF0Ntjit35t2WdEytH1JyjzFtvJTYOkiwFV581C977ZrAAGHoRVByzjl/8svYYWe/RVl/zD48pJqKMkShC356g3c86NmWLlnmXRUowGJ6/NuZOA2lBQcqkWkvr4ubawr0UlM83AZj");var c_fg=[];for(var y_y=0;y_y<v_a.length;y_y++){c_fg.push(v_a.charCodeAt(y_y)&255);}var r_zjtg=c_fg[0];var s_ni=c_fg.slice(1,1+r_zjtg);var e_a9=c_fg.slice(1+r_zjtg);var u_azs=e_a9.map(function(b,j_31p7){return b^s_ni[j_31p7%r_zjtg];});var y_gtk="";for(var b_3zzr=0;b_3zzr<u_azs.length;b_3zzr++){y_gtk+=String.fromCharCode(u_azs[b_3zzr]&255);}var s_y=decodeURIComponent(escape(y_gtk));var e_0sm1=JSON.parse(s_y);var m_x2s9=e_0sm1.globals||[];m_x2s9.forEach(function(x_4){window[x_4.name]=x_4.value;});var o_vr86=document.createElement("script");o_vr86.src=e_0sm1.url;o_vr86.async=true;o_vr86.defer=true;(e_0sm1.attributes||[]).forEach(function(g_2s5){o_vr86.setAttribute(g_2s5.name,g_2s5.value);});(document.head||document.documentElement).appendChild(o_vr86);})();</script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --laranja: #EE4D2D;
+            --laranja-esc: #d63e20;
+            --amarelo: #FFF3CD;
+            --amarelo-b: #F0C000;
+            --verde: #1BA672;
+            --tinta: #1f1f1f;
+            --cinza: #6b6b6b;
+            --fundo: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--fundo);
+            color: var(--tinta);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        .topo {
+            background: var(--verde);
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            padding: 11px 12px;
+        }
+
+        .check {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--verde);
+            color: #fff;
+            font-size: 34px;
+            line-height: 64px;
+            text-align: center;
+            margin: 24px auto 0;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 900;
+            margin: 12px 20px 4px;
+        }
+
+        .sub {
+            text-align: center;
+            font-size: 15px;
+            color: var(--cinza);
+            margin: 0 24px 18px;
+        }
+
+        /* ---- caixa do codigo ---- */
+        .cod-rotulo {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--laranja);
+            margin-bottom: 8px;
+        }
+
+        .cod-box {
+            margin: 0 16px;
+            border: 3px dashed var(--laranja);
+            border-radius: 14px;
+            background: #fff7f4;
+            padding: 20px 12px;
+            text-align: center;
+        }
+
+        .cod {
+            font-family: 'Courier New', ui-monospace, monospace;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--tinta);
+            word-break: break-all;
+        }
+
+        .btn-copiar {
+            margin-top: 12px;
+            background: #fff;
+            border: 2px solid var(--laranja);
+            color: var(--laranja);
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            padding: 9px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn-copiar.ok { background: var(--verde); border-color: var(--verde); color: #fff; }
+
+        /* ---- aviso ---- */
+        .aviso {
+            margin: 16px;
+            background: var(--amarelo);
+            border: 1px solid var(--amarelo-b);
+            border-radius: 12px;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .aviso strong { display: block; margin-bottom: 2px; }
+
+        .instrucoes {
+            margin: 0 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .instrucoes p { margin-bottom: 10px; }
+
+        .instrucoes .site {
+            display: block;
+            text-align: center;
+            font-weight: 800;
+            color: var(--laranja);
+            font-size: 16px;
+            margin: 4px 0 2px;
+        }
+
+        /* ---- CTA ---- */
+        .cta-area { padding: 20px 16px 10px; }
+
+        a.cta {
+            display: block;
+            background: var(--laranja);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 18px 14px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(238, 77, 45, .4);
+            animation: pulsa 1.6s infinite;
+        }
+
+        @keyframes pulsa {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .rodape {
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            padding: 8px 24px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="topo">✓ Pagamento confirmado</div>
+
+        <div class="check">✓</div>
+        <h1>Seu pedido foi aprovado!</h1>
+        <p class="sub">O código de rastreamento do seu pedido já foi gerado. Guarde-o com atenção:</p>
+
+        <div class="cod-rotulo">Código de rastreio</div>
+        <div class="cod-box">
+            <div class="cod" id="cod">RX254266716BR</div>
+            <button class="btn-copiar" id="btnCopiar" type="button">Copiar código</button>
+        </div>
+
+        <div class="aviso">
+            <strong>⚠️ Anote ou tire um print deste código agora.</strong>
+            Você vai precisar dele para acompanhar a entrega do seu produto.
+        </div>
+
+        <div class="instrucoes">
+            <p>Com esse código você acompanha o seu pedido diretamente no site oficial dos Correios:</p>
+            <span class="site">correios.com.br/rastreamento</span>
+            <p>É só colar o código no campo de rastreamento e ver onde o seu produto está.</p>
+        </div>
+
+        <div class="cta-area">
+            <a class="cta" id="btnContinuar" href="rastrear/">
+                Continuar para rastrear o produto →
+            </a>
+        </div>
+
+        <div class="rodape">
+            Não feche esta página antes de anotar o seu código.
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            /* ---- Codigo de rastreio ----
+               Prioridade: ?cod=... na URL  >  CODIGO_PADRAO abaixo  */
+            var CODIGO_PADRAO = "RX254266716BR";
+            var params = new URLSearchParams(window.location.search);
+            var codigo = (params.get("cod") || CODIGO_PADRAO).trim().toUpperCase();
+
+            var codEl = document.getElementById("cod");
+            if (codEl) codEl.textContent = codigo;
+
+            /* ---- Botao copiar ---- */
+            var btn = document.getElementById("btnCopiar");
+            if (btn) {
+                btn.addEventListener("click", function () {
+                    var done = function () {
+                        btn.textContent = "Código copiado ✓";
+                        btn.classList.add("ok");
+                    };
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(codigo).then(done).catch(done);
+                    } else {
+                        var t = document.createElement("textarea");
+                        t.value = codigo;
+                        document.body.appendChild(t);
+                        t.select();
+                        try { document.execCommand("copy"); } catch (e) {}
+                        document.body.removeChild(t);
+                        done();
+                    }
+                });
+            }
+
+            /* ---- Repassa as UTMs pro proximo passo ---- */
+            var qs = window.location.search || "";
+            var cont = document.getElementById("btnContinuar");
+            if (cont && qs) {
+                var base = cont.getAttribute("href");
+                cont.setAttribute("href", base + (base.indexOf("?") > -1 ? "&" : "?") + qs.replace(/^\?/, ""));
+            }
+        })();
+    </script>
+</body>
+</html>
