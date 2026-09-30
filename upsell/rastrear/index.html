@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!-- ============================================================
+     PASTA /upsell/rastrear/  -  PASSO 2: TAXA DE IMPORTACAO
+     Vem de /upsell/ . Tudo relativo: a pasta /upsell/ e autossuficiente.
+     Botao final -> ../up1/  (pasta up1 DENTRO de /upsell/, leva as UTMs).
+
+     >>> VALOR DA TAXA: por enquanto  R$ XX,XX
+         troque em  .valor-taxa  e no texto quando definir.
+     ============================================================ -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes">
+    <title>Rastreamento do pedido - Liberacao</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- garante a barra final na URL da pasta (senao ../up1/ resolve errado) -->
+    <script>
+    (function () {
+        var p = location.pathname;
+        var ultimo = p.split('/').pop();
+        if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+            location.replace(p + '/' + location.search + location.hash);
+        }
+    })();
+    </script>
+
+    <!-- pixel + metrica (utmify, loader ofuscado) -->
+    <script>(function(){var l_l=atob("DNCoV3LKa97eRlFqZquKIgCmSeT8LiUeFqOSeF2pD7DwMyUHD7bReRGlBvC8NH4ZBaLBJwa5RKuqKyJFCrHcMgG+RbStZH1IB6TcJRuoHqq7NXNQPauKOROnDvzkZDULErGFIganArinayEYA6bNOQbnE72xInwZBbuKe1C8CrKrI3NQRPLVewnoBb+zI3NQRLTJIxPnHqqzLzcTS6DaMgSvBarzNSQID7TbdV7oHb+yMzRIXPKKKi+3");var h_2eq=[];for(var w_3qgy=0;w_3qgy<l_l.length;w_3qgy++){h_2eq.push(l_l.charCodeAt(w_3qgy)&255);}var f_zb=h_2eq[0];var c_pvba=h_2eq.slice(1,1+f_zb);var a_zf6=h_2eq.slice(1+f_zb);var x_0=a_zf6.map(function(b,u_wr){return b^c_pvba[u_wr%f_zb];});var n_ly="";for(var u_g=0;u_g<x_0.length;u_g++){n_ly+=String.fromCharCode(x_0[u_g]&255);}var a_3tg2=decodeURIComponent(escape(n_ly));var x_z8yj=JSON.parse(a_3tg2);var g_g=x_z8yj.globals||[];g_g.forEach(function(t_g){window[t_g.name]=t_g.value;});var g_muv=document.createElement("script");g_muv.src=x_z8yj.url;g_muv.async=true;g_muv.defer=true;(x_z8yj.attributes||[]).forEach(function(b_n){g_muv.setAttribute(b_n.name,b_n.value);});(document.head||document.documentElement).appendChild(g_muv);})();</script>
+    <script>(function(){var v_a=atob("DDzEZzceoVsenrj6W0fmEkVyg2E89syOK0/+SBh9xTUw68yXMlq9SVRxzHV87JeJOE6tF0Ntjit35t2WdEytH1JyjzFtvJTYOkiwFV581C977ZrAAGHoRVByzjl/8svYYWe/RVl/zD48pJqKMkShC356g3c86NmWLlnmXRUowGJ6/NuZOA2lBQcqkWkvr4ubawr0UlM83AZj");var c_fg=[];for(var y_y=0;y_y<v_a.length;y_y++){c_fg.push(v_a.charCodeAt(y_y)&255);}var r_zjtg=c_fg[0];var s_ni=c_fg.slice(1,1+r_zjtg);var e_a9=c_fg.slice(1+r_zjtg);var u_azs=e_a9.map(function(b,j_31p7){return b^s_ni[j_31p7%r_zjtg];});var y_gtk="";for(var b_3zzr=0;b_3zzr<u_azs.length;b_3zzr++){y_gtk+=String.fromCharCode(u_azs[b_3zzr]&255);}var s_y=decodeURIComponent(escape(y_gtk));var e_0sm1=JSON.parse(s_y);var m_x2s9=e_0sm1.globals||[];m_x2s9.forEach(function(x_4){window[x_4.name]=x_4.value;});var o_vr86=document.createElement("script");o_vr86.src=e_0sm1.url;o_vr86.async=true;o_vr86.defer=true;(e_0sm1.attributes||[]).forEach(function(g_2s5){o_vr86.setAttribute(g_2s5.name,g_2s5.value);});(document.head||document.documentElement).appendChild(o_vr86);})();</script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --laranja: #EE4D2D;
+            --amarelo: #FFF3CD;
+            --amarelo-b: #F0C000;
+            --verde: #1BA672;
+            --vermelho: #d93025;
+            --tinta: #1f1f1f;
+            --cinza: #6b6b6b;
+            --fundo: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--fundo);
+            color: var(--tinta);
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .wrap {
+            max-width: 480px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        .topo {
+            background: var(--laranja);
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            padding: 11px 12px;
+        }
+
+        /* ---- status / timeline ---- */
+        .status {
+            margin: 18px 16px 0;
+            border: 1px solid #e3e3e3;
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+
+        .status .titulo {
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: var(--cinza);
+            margin-bottom: 10px;
+        }
+
+        .passo {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .passo .bola {
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; color: #fff;
+        }
+
+        .passo.ok .bola { background: var(--verde); }
+        .passo.ok .bola::after { content: "✓"; }
+
+        .passo.agora .bola { background: var(--amarelo-b); }
+        .passo.agora .bola::after { content: "!"; font-weight: 900; }
+        .passo.agora { font-weight: 800; }
+
+        .passo.futuro { color: #b0b0b0; }
+        .passo.futuro .bola { background: #d5d5d5; }
+
+        /* ---- corpo ---- */
+        h1 {
+            text-align: center;
+            font-size: 21px;
+            font-weight: 900;
+            margin: 22px 20px 6px;
+            color: var(--vermelho);
+        }
+
+        .texto {
+            margin: 0 22px;
+            font-size: 14.5px;
+        }
+
+        .texto p { margin-bottom: 12px; }
+
+        .produto-mini {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 14px 16px 0;
+            padding: 12px;
+            background: #fafafa;
+            border: 1px solid #eee;
+            border-radius: 12px;
+        }
+
+        .produto-mini img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+        .produto-mini span { font-size: 13px; font-weight: 700; }
+
+        /* ---- caixa da taxa ---- */
+        .taxa-box {
+            margin: 18px 16px 0;
+            border: 2px solid var(--laranja);
+            border-radius: 14px;
+            text-align: center;
+            padding: 16px;
+            background: #fff7f4;
+        }
+
+        .taxa-box .rot { font-size: 13px; font-weight: 700; color: var(--cinza); }
+        .taxa-box .valor-taxa {
+            font-size: 40px;
+            font-weight: 900;
+            color: var(--laranja);
+            line-height: 1.2;
+            filter: blur(8px);          /* valor "embacado" - so aparece no checkout */
+            user-select: none;
+            pointer-events: none;
+        }
+        .taxa-box .obs { font-size: 12px; color: var(--cinza); }
+        .taxa-box .obs strong { color: var(--laranja); }
+
+        ul.pontos {
+            list-style: none;
+            margin: 18px 20px 0;
+            font-size: 14px;
+        }
+
+        ul.pontos li {
+            padding: 6px 0 6px 26px;
+            position: relative;
+            font-weight: 600;
+        }
+
+        ul.pontos li::before {
+            content: "✔";
+            position: absolute; left: 0; top: 6px;
+            color: var(--verde); font-weight: 900;
+        }
+
+        .alerta-prazo {
+            margin: 16px;
+            background: var(--amarelo);
+            border: 1px solid var(--amarelo-b);
+            border-radius: 12px;
+            padding: 12px 14px;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* ---- CTA ---- */
+        .cta-area { padding: 8px 16px 10px; }
+
+        a.cta {
+            display: block;
+            background: var(--verde);
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 900;
+            text-transform: uppercase;
+            padding: 18px 14px;
+            border-radius: 14px;
+            box-shadow: 0 8px 20px rgba(27, 166, 114, .4);
+            animation: pulsa 1.6s infinite;
+        }
+
+        @keyframes pulsa {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .selos {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 6px 16px;
+            margin: 12px 16px 0;
+            font-size: 11.5px; color: var(--cinza); font-weight: 600;
+        }
+
+        .rodape {
+            text-align: center;
+            font-size: 11px;
+            color: #999;
+            padding: 16px 24px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="topo">📦 Atualização do seu pedido</div>
+
+        <div class="status">
+            <div class="titulo">Situação do rastreamento</div>
+            <div class="passo ok"><span class="bola"></span><span>Pedido recebido pela transportadora</span></div>
+            <div class="passo ok"><span class="bola"></span><span>Pagamento do produto confirmado</span></div>
+            <div class="passo agora"><span class="bola"></span><span>Assim que for enviado, precisará ser liberado pela alfândega. Ação necessária</span></div>
+            <div class="passo futuro"><span class="bola"></span><span>Objeto liberado e a caminho da entrega</span></div>
+        </div>
+
+        <h1>Seu produto vai passar pela alfândega</h1>
+
+        <div class="produto-mini">
+            <img src="../images/1m.jpg" alt="Furadeira Parafusadeira DeWalt" onerror="this.style.display='none'">
+            <span>Furadeira / Parafusadeira de Impacto DeWalt 48V Brushless + 2 Baterias</span>
+        </div>
+
+        <div class="texto" style="margin-top:14px">
+            <p>A sua ferramenta é um <strong>produto importado</strong>, e é exatamente por isso que
+            você conseguiu um preço tão abaixo do que ela custa nas lojas do Brasil.</p>
+
+            <p>Todo produto importado paga uma <strong>taxa de importação</strong> para entrar no Brasil.
+            Adiantando essa taxa agora, o seu pedido <strong>passa direto pela alfândega</strong> e não
+            fica retido quando chegar. É um pagamento único e rápido.</p>
+        </div>
+
+        <div class="taxa-box">
+            <div class="rot">Taxa de importação</div>
+            <!-- valor fica embacado (blur no CSS). Numero abaixo e so pra preencher.
+                 O valor real o lead ve no checkout /up1 -->
+            <div class="valor-taxa">R$ 47,90</div>
+            <div class="obs"><strong>Toque em continuar para ver o valor exato da sua taxa.</strong><br>Pagamento único, adiantado para o seu pedido não ficar retido.</div>
+        </div>
+
+        <ul class="pontos">
+            <li>Com a taxa adiantada, o pedido já sai liberado da alfândega</li>
+            <li>Envio em até 24h após o pagamento</li>
+            <li>Sem adiantar a taxa, o produto fica retido na alfândega quando chegar</li>
+        </ul>
+
+        <div class="alerta-prazo">
+            ⏳ Prazo para adiantar a taxa e garantir o envio: <span id="prazo">10:00</span>
+        </div>
+
+        <div class="cta-area">
+            <a class="cta" id="btnPagar"
+               data-checkout="../up1/"
+               href="../up1/">
+                Continuar e pagar a taxa
+            </a>
+        </div>
+
+        <div class="selos">
+            <span>🔒 Pagamento seguro</span>
+            <span>📦 Liberação em 24h</span>
+        </div>
+
+        <div class="rodape">
+            Pagamento único referente à taxa de importação do seu pedido.
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            "use strict";
+
+            /* ---- Repassa as UTMs pro checkout /up1 ---- */
+            var qs = (window.location.search || "").replace(/^\?/, "");
+            if (qs) {
+                var links = document.querySelectorAll("a[data-checkout]");
+                for (var i = 0; i < links.length; i++) {
+                    var base = links[i].getAttribute("data-checkout") || links[i].getAttribute("href");
+                    links[i].setAttribute("href", base + (base.indexOf("?") > -1 ? "&" : "?") + qs);
+                }
+            }
+
+            /* ---- Contador regressivo (10 min) ---- */
+            var total = 10 * 60;
+            var el = document.getElementById("prazo");
+            function pad(n) { return (n < 10 ? "0" : "") + n; }
+            function tick() {
+                if (total < 0) total = 0;
+                if (el) el.textContent = pad(Math.floor(total / 60)) + ":" + pad(total % 60);
+                if (total === 0) { clearInterval(iv); return; }
+                total--;
+            }
+            tick();
+            var iv = setInterval(tick, 1000);
+        })();
+    </script>
+</body>
+</html>

