@@ -1,0 +1,20 @@
+[
+  {
+    "id": "expressa",
+    "titulo": "Entrega Expressa",
+    "descricao": "Receba em até 2 dias úteis",
+    "preco": 19.5
+  },
+  {
+    "id": "padrao",
+    "titulo": "Entrega Padrão",
+    "descricao": "Receba em até 6 dias úteis",
+    "preco": 12.5
+  },
+  {
+    "id": "economica",
+    "titulo": "Entrega Econômica",
+    "descricao": "Frete Grátis · Receba em até 12 dias úteis",
+    "preco": 0
+  }
+]
